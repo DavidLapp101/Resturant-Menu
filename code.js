@@ -1,5 +1,18 @@
+//functionality for sign in page
+function signInPage(i){
+    let email = document.getElementById('email').value, psw = document.getElementById('pwd').value;
+    let fullArr = JSON.parse(localStorage.getItem('fullArr')) || [];
+    if(fullArr.length>0&&JSON.parse(localStorage.getItem('fullArr')).some(data => data.email.toLowerCase()== email && data.psw.toLowerCase() == psw)){
+        location.href="welome-page.html"
+    }
+    else{
+        alert('Incorrect login credentials')
+    }
+    i.preventDefault();
+}
+
 //Sign up page so that users can create new account
-const signUpPage =i=> {
+function signUpPage (i) {
     //sets input values to variables
     let firstName=document.getElementById("fname").value,
         lastName=document.getElementById("fname").value,
@@ -33,18 +46,4 @@ const signUpPage =i=> {
     }
     i.preventDefault()
     
-}
-
-//functionality for sign in page
-function signInPage(i){
-    let email = document.getElementById('email').value, psw = document.getElementById('pwd').value;
-    let fullArr = JSON.parse(localStorage.getItem('fullArr')) || [];
-    if(JSON.parse(localStorage.getItem('fullArr')).some(data => data.email.toLowerCase()== email && data.psw.toLowerCase() == psw)
-    &&fullArr.length){
-        location.href="welome-page.html"
-    }
-    else{
-        alert('Incorrect login credentials')
-    }
-    i.preventDefault();
 }
