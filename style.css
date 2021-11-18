@@ -253,6 +253,7 @@ font-family: 'Montserrat', sans-serif; */
     background-color: transparent;
     border: none;
     border-bottom: 2px solid rgb(226, 226, 226);
+    border-radius: 5px;
     width: 300px;
     outline: none;
     transition: 0.3s;
@@ -263,6 +264,7 @@ font-family: 'Montserrat', sans-serif; */
     background-color: transparent;
     width: 300px;
     background-color: rgb(226, 226, 226);
+    border-radius: 5px;
 }
 .sign-in-submit-btn{
     padding: 15px 0 15px 0;
@@ -272,10 +274,11 @@ font-family: 'Montserrat', sans-serif; */
     border:none;
     color: grey;
     transition: 0.3s;
+    border-radius: 5px;
 }
 .sign-in-submit-btn:hover{
-    background-color: grey;
-    color: lightgrey;
+    background-color: lightskyblue;
+    color: white;
     text-decoration: underline;
 }
 .sign-in-labels{
@@ -310,6 +313,66 @@ font-family: 'Montserrat', sans-serif; */
     margin-top: 30px
 }
 
+/* ////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////Sign up/////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////// */
+.full-sign-up{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    min-height: 600px;
+    justify-content: center;
+    background-color: whitesmoke;
+    font-family: 'Montserrat', sans-serif;
+}
+.sign-up-inputs{
+    padding: 15px 0 15px 10px;
+    font-size: 20;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid rgb(226, 226, 226);
+    width: 300px;
+    outline: none;
+    transition: 0.3s;
+    border-radius: 5px;
+}
+.sign-up-inputs:focus{
+    padding: 15px 0 15px 10px;
+    font-size: 20;
+    background-color: transparent;
+    width: 300px;
+    background-color: rgb(226, 226, 226);
+}
+.form-group{
+    margin-top: 20px;
+}
+.sign-up-labels{
+    color: grey;
+    font-size: 0.8rem;
+}
+.sign-up-title{
+    text-align: center;
+    font-size: 1.7rem;
+    font-weight: 600;
+}
+.sign-up-submit{
+    margin-top: 20px;
+    padding: 15px 0 15px 0;
+    font-size: 20;
+    background-color: rgb(226, 226, 226);
+    width: 300px;
+    border:none;
+    color: grey;
+    transition: 0.3s;
+    border-radius: 5px;
+}
+.sign-up-submit:hover{
+    background-color: lightskyblue;
+    color: white;
+    text-decoration: underline;
+}
 /*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////    HEADER  /  NAV BAR    ////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
