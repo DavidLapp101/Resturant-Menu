@@ -10,7 +10,28 @@
 
     </head>
     <body>
-
+        <main>
+            <h2>SIGNUP FORM</h2>
+            <form onsubmit="signUpPage(event);" autocomplete="off">
+                <div class="form-group">
+                    <input type="text" name="fname" id="fname" placeholder="First Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="lname" id="lname" placeholder="Last Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" name="email" id="email" placeholder="Email Address" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" name="pwd" id="pwd" placeholder="Password" required>
+                </div>
+                <div class="form-group">
+                    <button type="submit">Sign Up</button>
+                </div>
+            </form>
+            <p>Already a member? <a href="index.html">Sign In</a></p>
+        </main>
+        
 
         <!-- Ion icons and js page link -->
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
