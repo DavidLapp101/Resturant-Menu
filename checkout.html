@@ -6,12 +6,73 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,300&family=Montserrat:ital,wght
-        @0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-
+        <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,300&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+        <title>Checkout</title>
     </head>
     <body>
 
+        <header>
+            <a href="#" class="logo">Goober Eats</a>
+            <ul>
+            <li><ion-icon name="cart" class="nav-icons visited"></ion-icon></li>
+            <li><div class="prof"><ion-icon name="person-circle-outline" class="nav-icons"></ion-icon><span class="signout">
+                <div class="prof-options">
+                <a href="#">Profile</a>
+                <a href="index.html">Sign Out</a>
+                </div>
+            </span></div></li>
+            </ul>
+        </header>
+
+        <section>
+            <div class="checkout-wrapper">
+                <div class="info-con">
+                    <h1>Checkout</h1>
+                    <div class="underline"></div>
+
+                    <form>
+                        <input class="cc-txt-box" type="text" maxlength="16" placeholder="Card Number XXXX-XXXX-XXXX-XXXX">
+                    </form>
+                    <form>
+                        <input class="sml-txt-box" type="text" maxlength="3" placeholder="CVV">
+                    </form>
+                    <form>
+                        <input class="txt-box" type="text" placeholder="Address">
+                    </form>
+                    <form>
+                        <textarea class="lrg-txt-box" type="text" placeholder="Note for driver"></textarea>
+                    </form>
+                    <form>
+                        <input class="check" type="checkbox" class="radio" value="1" name="Del/Pick[1][]"><span class="checkspan">Delivery</span>
+                    </form>
+                    <form>
+                        <input class="check" type="checkbox" class="radio" value="1" name="Del/Pick[1][]"><span class="checkspan">Pick up</span>
+                    </form>
+
+                    <button onclick="checkOut()" class="checkoutbtn"><a id="cd" href="Rec.html">Checkout</a></button>
+                    <div class="underline"></div>
+                </div>
+
+                <div class="order-history">
+                    <div class="order-his-con">
+                        <div class="item-pic">
+                            <img src="">
+                        </div>
+                        <div class="item-price">
+                            <p>$12.42</p>
+                        </div>
+                        <form>
+                            <input  class="num-inc" type="number" id="quantity" name="quantity" min="0" max="999">
+                        </form>
+                        <button class="rem-btn">Remove</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+
+        </footer>
 
         <!-- Ion icons and js page link -->
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
