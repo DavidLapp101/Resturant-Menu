@@ -10,20 +10,45 @@
 
     </head>
     <body>
-        <main>
-            <h2>SIGNIN FORM</h2>
-            <form onsubmit="signInPage(event);" autocomplete="off">
-                <div class="form-group">
-                    <input type="email" name="email" id="email" placeholder="Email Address" required>
+        <main class="full-sign-in">
+            <div class="sign-in-title">
+                Log into Goober Eats
+            </div>
+            <div class="sign-in-wrapper">
+                <form onsubmit="signInPage(event);" autocomplete="off">
+                    <div class="email-password-submit">
+                        <div class="sign-in-info">
+                        <div style="margin-top: 20px;">
+                            <label class="sign-in-labels" for="email">Email</label><br>
+                            <input class="sign-in-email" type="email" name="email" id="email" placeholder="name@example.com" required>
+                        </div>
+                        <div style="margin-top: 20px;">
+                            <label class="sign-in-labels" for="pwd">PASSWORD</label><br>
+                            <input class="sign-in-password" type="password" name="pwd" id="pwd" placeholder="Password" required>
+                        </div>
+                        </div>
+                        <div>
+                            <button class="sign-in-submit-btn" type="submit" style="margin-top: 20px;">Sign In</button>
+                        </div>
+                    </div>
+                </form>
+                <div class="vl-wrapper">
+                    <div class="vertical-line">
+
+                    </div>
+                    <div class="vl-text">
+                        or
+                    </div>
+                    <div class="vertical-line">
+
+                    </div>
                 </div>
-                <div class="form-group">
-                    <input type="password" name="pwd" id="pwd" placeholder="Password" required>
+                <div class="sign-up-option-text">
+                    <p class="sign-u">Don't have an account? </p>
+                    <button class="sign-in-submit-btn" onclick="document.location='sign-up.html'">Sign Up</button>
                 </div>
-                <div class="form-group">
-                    <button type="submit">Sign In</button>
-                </div>
-            </form>
-            <p>Don't have an account? <a href="sign-up.html">Sign Up</a> here</p>
+            </div>
+            <a class="cant-log-in" href="#">Can't Log In?</a>
         </main>
 
 
