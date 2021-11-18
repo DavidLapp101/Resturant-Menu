@@ -1,4 +1,223 @@
 *, *:before, *:after {box-sizing: border-box; padding: 0; margin: 0;}
+
+.menu-body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.menu-background {
+    position: relative;
+    height: 700px;
+    background-image: url("images/food-background.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.menu-background h1 {
+    font-size: 48px;
+    color: orangered;
+    text-shadow: -3px -3px 0 #000, 3px -3px 0 #000, -3px 3px 0 #000, 3px 3px 0 #000;
+    letter-spacing: 5px;
+    text-align: center;
+    padding-top: 250px;
+}
+
+.menu-header {
+    position:absolute;
+    display: inline-block; 
+    margin-left: 5%;
+    bottom:0;
+    width: 90%;
+    height: 30px;
+    background-color: gainsboro;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+}
+
+.menu {
+    background-color: gainsboro;
+    height: 1500px;
+    border-left: solid orangered 15px;
+}
+
+.menu-tab {
+    position: sticky;
+    top: 0;
+    display: flex;
+    background-color: gainsboro;
+    width: 85%;
+    margin: 0 auto;
+    padding: 10px 0;
+    justify-content: space-between;
+    border-top: black solid 3px;
+    border-bottom: black solid 3px;
+}
+
+.time-frame {
+    display: flex;
+    width: 200px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.time-frame ion-icon {
+    font-size: 40px;
+    color: orangered;
+}
+
+.time-frame p {
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.menu-sections {
+    display: flex;
+    width: 600px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.menu-sections a {
+    text-decoration: none;
+    font-weight: 500;
+    color: orangered;
+    transition: 0.2s;
+}
+
+.menu-sections a:hover {
+    color: orange;
+    letter-spacing: 3px;
+}
+
+.checkout {
+    position: fixed;
+    display: flex;
+    right: 0;
+    z-index: 1;
+    height: 100vh;
+    width: 60px;
+    transition: 0.5s;
+}
+
+.checkout:hover{
+    width: 425px;
+}
+
+.reveal-checkout {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: orangered;
+    color: white;
+    font-size: 64px;
+    width: 75px;
+}
+
+
+
+.checkout-items {
+    background-color: white;
+    width: 350px;
+    padding-top: 40px;
+    overflow: scroll;
+}
+
+.menu-items {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.menu-title {
+    padding: 75px 0 50px 50px;
+}
+
+.menu-items td {
+    padding: 0 40px;
+} 
+
+.menu-items img {
+    width: 350px;
+    height: 250px;
+    border-radius: 25px;
+}
+
+.menu-items p {
+    padding-top: 25px;
+    font-size: 24px;
+    color: orangered;
+}
+
+.final-checkout {
+    font-size: 24px;
+    color: white;
+    background-color: orangered;
+    text-align: center;
+    padding: 20px;
+    transition: 0.5s;
+}
+
+.final-checkout:hover {
+    background-color: orange;
+    font-weight: 700;
+    color: blue;
+}
+
+.checkout-final-price {
+    font-weight: 600;
+}
+
+.checkout-item, .checkout-info, .price, .quantity-change, .quantity-change div {
+    display: flex;
+    align-items: center;
+}
+
+.checkout-info, .price{
+    width: 300px;
+    justify-content: space-between;
+}
+
+.checkout-item {
+    flex-direction: column;
+    padding-top: 40px;
+    border-bottom: solid 3px black;
+}
+
+.price {
+    padding-top: 15px;
+}
+
+.checkout-item img {
+    width: 100px;
+    height: 75px;
+    border-radius: 20px;
+}
+
+.checkout-item p {
+    font-size: 20px;
+}
+
+.quantity-change ion-icon {
+    font-size: 25px;
+    transition: 0.2s;
+}
+
+.quantity-change ion-icon:hover {
+    color: orangered;
+}
+
+.remove-checkout {
+    text-decoration: underline;
+    color: orangered;
+    transition: 0.2s;
+}
+
+.remove-checkout:hover {
+    color: orange;
+}
+
+.checkout-item-final-price {
+    font-weight: 600;
+}
+
 /* font-family: 'Lato', sans-serif;
 font-family: 'Montserrat', sans-serif; */
 
@@ -89,4 +308,325 @@ font-family: 'Montserrat', sans-serif; */
     text-decoration: underline;
     text-align: center;
     margin-top: 30px
+}
+
+/*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////    HEADER  /  NAV BAR    ////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 100px;
+    background-color: lightskyblue;
+    transition: 0.6s;
+}
+
+.sticky {
+    padding: 10px 100px;
+    background-color: lightskyblue;
+}
+
+header .logo {
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 2rem;
+    letter-spacing: 4px;
+    color: white;
+}
+
+header ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header ul li {
+    list-style: none;
+}
+
+header ul li {
+    margin: 0 20px;
+    text-decoration: none;
+    color: white;
+    transition: 0.6s;
+}
+
+.nav-icons {
+    font-size: 2.2rem;
+    color: white;
+    cursor: pointer;
+}
+
+header ul li a:hover {
+    opacity: 0.5;
+}
+
+.visited {
+    opacity: 0.5;
+}
+
+.prof {
+    display: column;
+}
+
+.prof-options p, a {
+    display: block;
+    margin-top: 7px;
+    text-decoration: none;
+    color: black;
+}
+
+.prof-options a:hover {
+    color: lightskyblue;
+}
+
+.prof .signout {
+    visibility: hidden;
+    min-width: 120px;
+    background-color: white;
+    box-shadow: 2px 2px 2px rgba(161, 157, 157, 0.7);
+    font-family: "Lato";
+    font-size: .8rem;
+    text-align: center;
+    border-radius: 10px;
+    padding: 13px 40px;
+    position: absolute;
+    z-index: 1;
+    margin: 35px -78px;
+}
+
+.prof:hover .signout {
+    visibility: visible;
+}
+
+/*///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////    FOOTER CSS    /////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+
+
+/*///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////    SECTION    ////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+.page-back-drop {
+    padding: 100px 0 40px 0;
+    background-color: whitesmoke;
+}
+
+.checkout-wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+.info-con {
+    width: 40%;
+    height: 900px;
+    margin: 60px 0 40px 60px;
+    border-radius: 15px;
+    background-color: white;
+    box-shadow: 2px 2px 2px 3px rgba(194, 184, 184, .4);
+}
+
+.info-con h1 {
+    font-family: "Lato";
+    text-align: center;
+    padding-top: 30px;
+}
+
+.underline {
+    width: 90%;
+    border-bottom: 3px solid lightskyblue;
+    margin: 5px auto;
+}
+
+.txt-box {
+    width: 93.5%;
+    height: 5%;
+    padding-left: 5px;
+    margin: 20px 0 0 20px;
+    border: 1.5px solid grey;
+    border-radius: 10px;
+}
+
+.lrg-txt-box {
+    width: 93.5%;
+    height: 30%;
+    padding-left: 5px;
+    margin: 20px 0 0 20px;
+    border: 1.5px solid grey;
+    border-radius: 10px;
+}
+
+.cc-txt-box {
+    width: 93.5%;
+    height: 5%;
+    padding-left: 5px;
+    margin: 60px 0 0 20px;
+    border: 1.5px solid grey;
+    border-radius: 10px;
+}
+
+.sml-txt-box {
+    width: 10%;
+    height: 5%;
+    text-align: center;
+    margin: 20px 0 0 20px;
+    border: 1.5px solid grey;
+    border-radius: 10px;
+}
+
+.check {
+    margin: 20px 0 0 20px;
+}
+
+.checkspan {
+    font-family: "Lato";
+    font-size: 1rem;
+    margin-left: 5px;
+}
+
+.checkoutbtn {
+    width: 50%;
+    height: 6%;
+    margin: 10% 25% 0 25%;
+    font-family: "Lato";
+    font-size: 1.2rem;
+    color: white;
+    background-color: lightskyblue;
+    border: 2px solid white;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.checkoutbtn:hover {
+    background-color: rgba(136, 207, 252, 0.9)
+}
+
+.checkoutbtn a {
+    text-decoration: none;
+    color: white;
+}
+
+/*///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////    CHECKOUT CLASSES    ///////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+.order-history {
+    display: column;
+    justify-content: left;
+    min-height: 800px;
+    margin: 60px 0 40px 60px;
+}
+
+.history-item-name {
+    min-width: 150px;
+    height: 20px;
+    font-family: "Lato";
+    margin: 10px 0 0 20px;
+}
+
+.order-his-con {
+    width: 125%;
+    display: flex;
+    justify-content: left;
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 0 0 20px 0;
+    box-shadow: 2px 2px 2px 3px rgba(194, 184, 184, .4);
+}
+
+.item-pic {
+    width: 150px;
+    height: 150px;
+    background-color: black;
+    border-radius: 10px;
+    background-size: cover;
+}
+
+.item-price {
+    min-width: 50px;
+    height: 50px;
+    text-align: center;
+    margin: 100px 0 0 30px;
+}
+
+.item-price p {
+    margin-top: 15px;
+}
+
+.num-inc {
+    width: 45px;
+    height: 30px;
+    margin: 110px 0 0 0;
+    padding-left: 5px;
+}
+
+.rem-btn {
+    width: 20%;
+    height: 50px;
+    font-size: 1.2rem;
+    color: white;
+    background-color: lightskyblue;
+    border: 1px solid lightskyblue;
+    border-radius: 10px;
+    margin: 50px 0 0 200px;
+}
+
+.rem-btn:hover {
+    background-color: rgba(136, 207, 252, 0.9);
+    cursor: pointer;
+}
+
+/*///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////    RECEIPT CSS    ////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+.rec-page {
+    width: 50%;
+    min-height: 100%;
+    border-radius: 20px;
+    box-shadow: 2px 2px 2px 3px rgba(194, 184, 184, .4);
+    background-color: white;
+    margin: 60px auto;
+}
+
+.rec-con {
+    display: flex;
+    justify-content: left;
+    margin: 0 0 0 15px;
+}
+
+.rec-item-name {
+    min-width: 150px;
+    height: 20px;
+    font-family: "Lato";
+    margin: 10px 0 0 45px;
+}
+
+.item-pic-rec {
+    width: 150px;
+    height: 150px;
+    background-color: black;
+    border-radius: 10px;
+    margin: 0 0 0 20px;
+}
+
+/*///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////    WELCOME PAGE CSS    ///////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+.wel-to-goo {
+    width: 100%;
+    height: 100vh;
+    background-image: url("images/");
 }
