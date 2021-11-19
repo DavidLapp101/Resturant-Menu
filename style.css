@@ -608,8 +608,8 @@ header ul li a:hover {
     box-shadow: 2px 2px 2px 3px rgba(194, 184, 184, .4);
 }
 
-.item-pic {
-    width: 150px;
+.item-pic img {
+    width: 200px;
     height: 150px;
     background-color: black;
     border-radius: 10px;
@@ -676,8 +676,8 @@ header ul li a:hover {
     margin: 10px 0 0 45px;
 }
 
-.item-pic-rec {
-    width: 150px;
+.item-pic-rec img {
+    width: 200px;
     height: 150px;
     background-color: black;
     border-radius: 10px;
