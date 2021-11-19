@@ -77,7 +77,7 @@ function removeCheckout(element) {
 }
 
 /*///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////    NEEDS LABEL    ////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////    MENU CART TAB    //////////////////////////////////////////////////////////////////////////////////////
 *////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Makes it so that menu items grow a bit on hover
@@ -87,7 +87,7 @@ $(".menu-items td").on({
     },
     mouseleave: function () {
         $(this).children('img').css({'width': '350px', 'height': '250px'});
-        $('.reveal-checkout').css({'background-color': 'orangered', 'transition': '0.5s'});
+        $('.reveal-checkout').css({'background-color': 'lightskyblue', 'transition': '0.5s'});
     }
 });
 
@@ -95,7 +95,7 @@ $(".menu-items td").on({
 // to notify that item has been added. Any particular item cannot be added more than once
 function addToCart(name, price) {
     if($(`#${name.replace(/\s+/g, '').replace('&', '\\&')}`).length == 0) {
-        $('.reveal-checkout').css({'background-color': 'blue', 'transition': '0.5s'});
+        $('.reveal-checkout').css({'background-color': 'rgb(45, 45, 247)', 'transition': '0.5s'});
 
         $('.checkout-items').append(`
         <div class="checkout-item" id="${name.replace(/\s+/g, '')}">
