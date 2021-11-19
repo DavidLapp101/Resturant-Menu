@@ -247,7 +247,6 @@ $(window).on('load', function() {
     }
 
     if($('.menu-body').length > 0 && currentUser.checkoutOrder != undefined) {
-        console.log('working');
         for(i = 0; i < currentUser.checkoutOrder.name.length; i++) {
             $('.checkout-items').append(`
             <div class="checkout-item" id="${currentUser.checkoutOrder.name[i].replace(/\s+/g, '')}">
