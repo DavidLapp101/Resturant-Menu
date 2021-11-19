@@ -10,26 +10,28 @@
 
     </head>
     <body>
-        <main>
-            <h2>SIGNUP FORM</h2>
+        <main class="full-sign-up">
+            <p class="sign-up-title">Create your Account </p>
             <form onsubmit="signUpPage(event);" autocomplete="off">
                 <div class="form-group">
-                    <input type="text" name="fname" id="fname" placeholder="First Name" required>
+                    <label for="fname" class="sign-up-labels">First Name</label><br>
+                    <input class="sign-up-inputs" type="text" name="fname" id="fname" placeholder="First Name" required>
                 </div>
                 <div class="form-group">
-                    <input type="text" name="lname" id="lname" placeholder="Last Name" required>
+                    <label for="lname" class="sign-up-labels">Last Name</label><br>
+                    <input class="sign-up-inputs" type="text" name="lname" id="lname" placeholder="Last Name" required>
                 </div>
                 <div class="form-group">
-                    <input type="email" name="email" id="email" placeholder="Email Address" required>
+                    <label for="email" class="sign-up-labels">Email</label><br>
+                    <input class="sign-up-inputs" type="email" name="email" id="email" placeholder="name@example.com" required>
                 </div>
                 <div class="form-group">
-                    <input type="password" name="pwd" id="pwd" placeholder="Password" required>
+                    <label for="pwd" class="sign-up-labels">Password</label><br>
+                    <input class="sign-up-inputs" type="password" name="pwd" id="pwd" placeholder="Password" required>
                 </div>
-                <div class="form-group">
-                    <button type="submit">Sign Up</button>
-                </div>
+                    <button type="submit" class="sign-up-submit">Sign Up</button>
             </form>
-            <p>Already a member? <a href="index.html">Sign In</a></p>
+            <a href="index.html" style="margin-top: 20px;">Back</a>
         </main>
         
 
