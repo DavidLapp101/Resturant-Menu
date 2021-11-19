@@ -1,12 +1,17 @@
 //functionality for sign in page
 function signInPage(i){
-    let email = document.getElementById('email').value, psw = document.getElementById('pwd').value;
-    let fullArr = JSON.parse(localStorage.getItem('fullArr')) || [];
-    if(fullArr.length>0&&JSON.parse(localStorage.getItem('fullArr')).some(data => data.email.toLowerCase()== email && data.psw.toLowerCase() == psw)){
-        location.href="welome-page.html"
+    if(document.getElementById("email").value=='admin@goobereats.com' && document.getElementById('pwd').value=='password'){
+        location.href="manager-page.html";
     }
     else{
-        alert('Incorrect login credentials')
+        let email = document.getElementById('email').value, psw = document.getElementById('pwd').value;
+        let fullArr = JSON.parse(localStorage.getItem('fullArr')) || [];
+        if(fullArr.length>0&&JSON.parse(localStorage.getItem('fullArr')).some(data => data.email.toLowerCase()== email && data.psw.toLowerCase() == psw)){
+            location.href="welome-page.html"
+        }
+        else{
+            alert('Incorrect login credentials')
+        }
     }
     i.preventDefault();
 }
@@ -18,7 +23,8 @@ function signUpPage (i) {
         lastName=document.getElementById("fname").value,
         email=document.getElementById("email").value,
         psw=document.getElementById("pwd").value;
-    
+
+     
     //Sets full array to either an empty array (if nothing was pushed to local storage)
     //or pulls items from current local storage
     let fullArr = JSON.parse(localStorage.getItem('fullArr')) || [];
