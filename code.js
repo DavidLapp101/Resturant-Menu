@@ -3,8 +3,9 @@ var currentEmail;
 var emailHolder = '2tgewg3g3%&^j$';
 
 class Customer {
-    constructor(name) {
+    constructor(name, lastName) {
         this.name = name;
+        this.lastName = lastName;
         this.checkoutOrder;
         this.pastOrders = [];
     }
@@ -29,7 +30,7 @@ $(window).on('unload', function() {
     localStorage.setItem(currentEmail, JSON.stringify(currentUser));
 });
 
-$( window ).on('load', function() { 
+$(window).on('load', function() { 
     let email = localStorage.getItem(emailHolder);
     currentUser = JSON.parse(localStorage.getItem(email));
     console.log(currentUser);
@@ -72,8 +73,7 @@ $("input:checkbox").on('click', function() {
 *////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 function removeCheckout(element) {
-    $(element).parent().siblings().remove();
-    $(element).parent().remove();
+    $(element).parent().parent().remove();
 }
 
 /*///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -104,7 +104,7 @@ function addToCart(name, price) {
                 <p>${name} - $${price}</p>
             </div>
             <div class="price">
-                <p class="remove-checkout" onclick="removeCheckout(this)">Remove</p>
+                <p class="remove-checkout" onclick="removeCart(this)">Remove</p>
 
                 <div class="quantity-change">
                     <ion-icon name="caret-down-circle" class="quantity-button" onclick="quantityChange(this, false, ${price})"></ion-icon>
@@ -144,7 +144,7 @@ function quantityChange(element, operation, price) {
 }
 
 // Removes the menu item from the cart
-function removeCheckout(element) {
+function removeCart(element) {
     $(element).parent().parent().remove();
 
     calculatePrice();
@@ -186,7 +186,7 @@ const signUpPage =i=> {
     //Adds users input to local storage and resets form if email isn't duplicate
     if(localStorageContains==false){
         fullArr.push({firstName, lastName, email, psw});
-        localStorage.setItem(email, JSON.stringify(new Customer(firstName)));
+        localStorage.setItem(email, JSON.stringify(new Customer(firstName, lastName)));
         localStorage.setItem('fullArr', JSON.stringify(fullArr));
         document.querySelector('form').reset();
         document.getElementById('fname').focus();
@@ -228,7 +228,11 @@ $('.final-checkout').on('click', function() {
             
             order.pushOrder(name, quantity, price);
             currentUser.checkoutOrder = order;
+
+            location.href="checkout.html";
         });
+
+
     }
     else {
         alert('Add items to your cart!');
@@ -236,3 +240,77 @@ $('.final-checkout').on('click', function() {
 
     console.log(currentUser.checkoutOrder);
 });
+
+$(window).on('load', function() { 
+    if($('.first-last-name').length > 0) {
+        $('.first-last-name').html(`${currentUser.name} ${currentUser.lastName}`);
+    }
+
+    if($('.menu-body').length > 0 && currentUser.checkoutOrder != undefined) {
+        console.log('working');
+        for(i = 0; i < currentUser.checkoutOrder.name.length; i++) {
+            $('.checkout-items').append(`
+            <div class="checkout-item" id="${currentUser.checkoutOrder.name[i].replace(/\s+/g, '')}">
+                <div class="checkout-info">
+                    <img src="images/${currentUser.checkoutOrder.name[i]}.jpg" alt="">
+                    <p>${currentUser.checkoutOrder.name[i]} - $${currentUser.checkoutOrder.price[i]}</p>
+                </div>
+                <div class="price">
+                    <p class="remove-checkout" onclick="removeCart(this)">Remove</p>
+
+                    <div class="quantity-change">
+                        <ion-icon name="caret-down-circle" class="quantity-button" onclick="quantityChange(this, false, ${currentUser.checkoutOrder.price[i]})"></ion-icon>
+                        <p class="quantity">${currentUser.checkoutOrder.quantity[i]}</p>
+                        <ion-icon name="caret-up-circle" class="quantity-button" onclick="quantityChange(this, true, ${currentUser.checkoutOrder.price[i]})"></ion-icon>
+                        <p>&emsp;</p>
+                        <p class="checkout-item-final-price">$${Math.round((currentUser.checkoutOrder.price[i] * currentUser.checkoutOrder.quantity[i] + Number.EPSILON) * 100) / 100}</p>
+                    </div>
+                </div>
+                <p style="display: none;" class="item-name">${currentUser.checkoutOrder.name[i]}</p>
+                <p style="display: none;" class="item-price">${currentUser.checkoutOrder.price[i]}</p>
+            </div>`);
+
+            calculatePrice();
+        }
+    }
+    else if($('.checkout-wrapper').length > 0) {
+        for(i = 0; i < currentUser.checkoutOrder.name.length; i++) {
+            $('.order-history').append(`
+            <div class="customer-order-item">
+                <div class="history-item-name">${currentUser.checkoutOrder.name[i]}</div>
+                <div class="order-his-con">
+                    <div class="item-pic">
+                        <img src="images/${currentUser.checkoutOrder.name[i]}.jpg">
+                    </div>
+                    <div class="item-price">
+                        <p>$${Math.round((currentUser.checkoutOrder.price[i] * currentUser.checkoutOrder.quantity[i] + Number.EPSILON) * 100) / 100}</p>
+                    </div>
+                    <form>
+                        <input  class="num-inc" type="number" id="quantity" name="quantity" min="1" max="999">
+                    </form>
+                    <button class="rem-btn" onclick="removeCheckout(this)">Remove</button>
+                </div>
+            </div>
+            `);
+        }
+    }
+ });
+
+//  $(window).on('load', function() { 
+//     if($('.rec-page').length > 0) {
+//         for(i = 0; i < currentUser.checkoutOrder.name.length; i++) {
+//             console.log('loaded');
+//             $('.order-history').append(`
+//             <div class="rec-item-name">${currentUser.checkoutOrder.name[i]}</div>
+//                 <div class="rec-con">
+//                 <div class="item-pic-rec">
+//                     <img src="images/${currentUser.checkoutOrder.name[i]}.jpg">
+//                 </div>
+//                 <div class="item-price">
+//                     <p>$${Math.round((currentUser.checkoutOrder.price[i] * currentUser.checkoutOrder.quantity[i] + Number.EPSILON) * 100) / 100}</p>
+//                 </div>
+//             </div>
+//             `);
+//         }
+//     }
+//  });
