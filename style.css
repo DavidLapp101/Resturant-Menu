@@ -14,7 +14,7 @@
 
 .menu-background h1 {
     font-size: 48px;
-    color: orangered;
+    color: lightskyblue;
     text-shadow: -3px -3px 0 #000, 3px -3px 0 #000, -3px 3px 0 #000, 3px 3px 0 #000;
     letter-spacing: 5px;
     text-align: center;
@@ -36,12 +36,12 @@
 .menu {
     background-color: gainsboro;
     height: 1500px;
-    border-left: solid orangered 15px;
+    border-left: solid lightskyblue 15px;
 }
 
 .menu-tab {
     position: sticky;
-    top: 0;
+    top: 63;
     display: flex;
     background-color: gainsboro;
     width: 85%;
@@ -61,7 +61,7 @@
 
 .time-frame ion-icon {
     font-size: 40px;
-    color: orangered;
+    color: lightskyblue;
 }
 
 .time-frame p {
@@ -79,12 +79,12 @@
 .menu-sections a {
     text-decoration: none;
     font-weight: 500;
-    color: orangered;
+    color: lightskyblue;
     transition: 0.2s;
 }
 
 .menu-sections a:hover {
-    color: orange;
+    color: rgb(45, 45, 247);
     letter-spacing: 3px;
 }
 
@@ -106,7 +106,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    background-color: orangered;
+    background-color: lightskyblue;
     color: white;
     font-size: 64px;
     width: 75px;
@@ -143,22 +143,22 @@
 .menu-items p {
     padding-top: 25px;
     font-size: 24px;
-    color: orangered;
+    color: lightskyblue;
 }
 
 .final-checkout {
     font-size: 24px;
     color: white;
-    background-color: orangered;
+    background-color: lightskyblue;
     text-align: center;
     padding: 20px;
     transition: 0.5s;
 }
 
 .final-checkout:hover {
-    background-color: orange;
+    background-color: rgba(136, 207, 252, 0.7);
     font-weight: 700;
-    color: blue;
+    color: white;
 }
 
 .checkout-final-price {
@@ -201,7 +201,7 @@
 }
 
 .quantity-change ion-icon:hover {
-    color: orangered;
+    color: lightskyblue;
 }
 
 .remove-checkout {
@@ -222,7 +222,7 @@
 font-family: 'Montserrat', sans-serif; */
 
 /* ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////Login page(Index)//////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////    LOGIN PAGE(INDEX)    //////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 .sign-in-wrapper{
     display: flex;
@@ -313,9 +313,9 @@ font-family: 'Montserrat', sans-serif; */
     margin-top: 30px
 }
 
-/* ////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////Sign up/////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////// */
+/* ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////    SIGN UP    ////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 .full-sign-up{
     display: flex;
     flex-direction: column;
@@ -388,6 +388,7 @@ header{
     padding: 40px 100px;
     background-color: lightskyblue;
     transition: 0.6s;
+    z-index: 1;
 }
 
 .sticky {
@@ -608,8 +609,8 @@ header ul li a:hover {
     box-shadow: 2px 2px 2px 3px rgba(194, 184, 184, .4);
 }
 
-.item-pic {
-    width: 150px;
+.item-pic img {
+    width: 200px;
     height: 150px;
     background-color: black;
     border-radius: 10px;
@@ -676,8 +677,8 @@ header ul li a:hover {
     margin: 10px 0 0 45px;
 }
 
-.item-pic-rec {
-    width: 150px;
+.item-pic-rec img {
+    width: 200px;
     height: 150px;
     background-color: black;
     border-radius: 10px;
