@@ -13,6 +13,7 @@ class Customer {
 
 class Order {
     constructor() {
+        this.orderTitle = '';
         this.name = [];
         this.quantity = [];
         this.price = [];
@@ -58,15 +59,21 @@ $("input:checkbox").on('click', function() {
     } else {
       $inputbox.prop("checked", false);
     }
-  });
+});
 
-    var confirmbtn = $("#cd");
+$('.checkoutbtn').on('click', function() {
+    if($('#order-title-text').val() == '') {
+        alert('Please enter a name for your order!');
+    }
+    else {
+        currentUser.checkoutOrder.orderTitle = $('#order-title-text').val();
 
-    for (var i = 0, len = confirmbtn.length; i < len; i++) {
-    confirmbtn[i].onclick = function() {
-        return confirm("Confirm Your Order");
-    };
-}
+        if(confirm("Confirm Your Order")) {
+            location.href="rec.html";
+        }      
+    }
+});
+
 
 /*///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////    REMOVE FROM CART JS    ////////////////////////////////////////////////////////////////////////////////
@@ -77,7 +84,7 @@ function removeCheckout(element) {
 }
 
 /*///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////    MENU CART TAB    //////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////    NEEDS LABEL    ////////////////////////////////////////////////////////////////////////////////////////
 *////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Makes it so that menu items grow a bit on hover
@@ -95,7 +102,7 @@ $(".menu-items td").on({
 // to notify that item has been added. Any particular item cannot be added more than once
 function addToCart(name, price) {
     if($(`#${name.replace(/\s+/g, '').replace('&', '\\&')}`).length == 0) {
-        $('.reveal-checkout').css({'background-color': 'rgb(45, 45, 247)', 'transition': '0.5s'});
+        $('.reveal-checkout').css({'background-color': 'blue', 'transition': '0.5s'});
 
         $('.checkout-items').append(`
         <div class="checkout-item" id="${name.replace(/\s+/g, '')}">
@@ -247,7 +254,6 @@ $(window).on('load', function() {
     }
 
     if($('.menu-body').length > 0 && currentUser.checkoutOrder != undefined) {
-        console.log('working');
         for(i = 0; i < currentUser.checkoutOrder.name.length; i++) {
             $('.checkout-items').append(`
             <div class="checkout-item" id="${currentUser.checkoutOrder.name[i].replace(/\s+/g, '')}">
