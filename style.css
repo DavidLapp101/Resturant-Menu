@@ -492,14 +492,9 @@ header ul li a:hover {
     justify-content: center;
     height: 10rem;
     width: 10rem;
-    border-radius: 50%;
-    background-color: lightskyblue;
-    text-align: center;
     overflow: hidden;
     background-size: cover;
-    font-family: "Lato";
-    font-size: 1.8rem;
-    color: white;
+    border-radius: 50%;
     margin: 48px 0 0 50px;
 }
 
