@@ -166,7 +166,7 @@ function calculatePrice() {
 const signUpPage =i=> {
     //sets input values to variables
     let firstName=document.getElementById("fname").value,
-        lastName=document.getElementById("fname").value,
+        lastName=document.getElementById("lname").value,
         email=document.getElementById("email").value,
         psw=document.getElementById("pwd").value;
     
@@ -204,7 +204,7 @@ const signUpPage =i=> {
 function signInPage(i){
     let email = document.getElementById('email').value, psw = document.getElementById('pwd').value;
     let fullArr = JSON.parse(localStorage.getItem('fullArr')) || [];
-    if(JSON.parse(localStorage.getItem('fullArr')).some(data => data.email.toLowerCase()== email && data.psw.toLowerCase() == psw)
+    if(JSON.parse(localStorage.getItem('fullArr')).some(data => data.email.toLowerCase()== email && data.psw == psw)
     &&fullArr.length){
         currentUser = JSON.parse(localStorage.getItem(email));
         currentEmail = email;
@@ -215,6 +215,30 @@ function signInPage(i){
         alert('Incorrect login credentials')
     }
     i.preventDefault();
+}
+
+//functionality for forget password 
+function forgetPwd(i){
+    let email=document.getElementById('forget-pwd-email').value;
+    let newPass=document.getElementById('forget-pwd').value;
+    let fullArr = JSON.parse(localStorage.getItem('fullArr'));
+    let firstName="1";
+    let lastName="1";
+    let psw=newPass
+    for(let f=0; f<fullArr.length-1; f++){
+        console.log("Last Name: " + fullArr[f].firstName + ", Last Name: "+fullArr[f].lastName+", Email: "+fullArr[f].email+", Password: "+fullArr[f].psw)
+        if(fullArr[f].email==email){
+            firstName=fullArr[f].firstName;
+            console.log(firstName)
+            lastName=fullArr[f].lastName;
+            console.log(lastName)
+            fullArr.splice(f,1)
+        }   
+    } 
+    let newData={firstName, lastName, email, psw};
+    fullArr.push(newData)
+    fullArr=JSON.stringify(fullArr);
+    localStorage.setItem('fullArr', fullArr)
 }
 
 $('.final-checkout').on('click', function() {
