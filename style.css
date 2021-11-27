@@ -558,12 +558,80 @@ header ul li a:hover {
 .footer-txt {
     width: 100%;
     height: 60px;
-    border: 2px solid yellow;
     font-family: "Lato";
     text-align: center;
     font-size: .8rem;
     color: rgba(255, 255, 255, 0.5);
     margin: 10px auto;
+}
+
+.reach-out-con {
+    display: column;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    font-family: "Lato";
+    font-size: 32px;
+    width: 25%;
+    height: 160px;
+    margin: 68px 0 0 100px;
+}
+
+.reach-out-text-con {
+    display: flex;
+    justify-content: center;
+}
+
+.reach-out-input {
+    font-size: 1.2rem;
+    font-family: "Lato";
+    color: white;
+    width: 100%;
+    height: 45px;
+    border: 2px solid white;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+    padding-left: 15px;
+    background-color: rgba(36, 34, 34, 0.7);
+}
+
+.reach-out-send {
+    font-size: 1.2rem;
+    font-family: "Lato";
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    background-color: lightskyblue;
+    width: 25%;
+    height: 45px;
+    border: 2px solid lightskyblue;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    transition: 0.6s;
+    cursor: pointer;
+}
+
+.reach-out-send:hover {
+    background-color: white;
+    border: 2px solid white;
+    color: lightskyblue;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+}
+
+.social-icons {
+    font-size: 1.3rem;
+    text-decoration: none;
+    color: white;
+    transition: 0.6s;
+    margin: 10px
+}
+
+.social-icons:hover {
+    color: rgb(45, 45, 247);
 }
 
 /*///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
