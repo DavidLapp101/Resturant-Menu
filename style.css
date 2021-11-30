@@ -481,28 +481,42 @@ header ul li a:hover {
 
 .copyright {
     display: flex;
+    justify-content: space-around;
     width: 100%;
     height: 250px;
     background-color: rgba(36, 34, 34, 0.7);
     margin: 7% 0 5% 0;
 }
 
-.goober-logo {
+.goober-logo-con {
     display: flex;
     justify-content: center;
-    height: 10rem;
-    width: 10rem;
+    width: 30%;
+    height: 160px;
+    overflow: hidden;
+    background-size: cover;
+    margin: 48px 0 0 0;
+}
+
+.goober-logo {
+    width: 160px;
+    height: 160px;
     overflow: hidden;
     background-size: cover;
     border-radius: 50%;
-    margin: 48px 0 0 50px;
+}
+
+.goober-logo img {
+    width: 160px;
+    height: 160px;
 }
 
 .column-tool {
     width: 30%;
+    height: 160px;
     display: column;
     justify-content: center;
-    margin: 70px 0 0 310px;
+    margin: 70px 0 0 0;
 }
 
 .creators {
@@ -572,9 +586,9 @@ header ul li a:hover {
     color: white;
     font-family: "Lato";
     font-size: 32px;
-    width: 25%;
+    width: 30%;
     height: 160px;
-    margin: 68px 0 0 100px;
+    margin: 68px 0 0 0;
 }
 
 .reach-out-text-con {
