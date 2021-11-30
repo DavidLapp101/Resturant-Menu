@@ -232,7 +232,7 @@ function forgetPwd(i){
     let firstName="1";
     let lastName="1";
     let psw=newPass
-    for(let f=0; f<fullArr.length-1; f++){
+    for(let f=0; f<=fullArr.length-1; f++){
         console.log("Last Name: " + fullArr[f].firstName + ", Last Name: "+fullArr[f].lastName+", Email: "+fullArr[f].email+", Password: "+fullArr[f].psw)
         if(fullArr[f].email==email){
             firstName=fullArr[f].firstName;
