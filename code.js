@@ -69,6 +69,7 @@ $('.checkoutbtn').on('click', function() {
         currentUser.checkoutOrder.orderTitle = $('#order-title-text').val();
 
         if(confirm("Confirm Your Order")) {
+            currentUser.pastOrders.push(currentUser.checkoutOrder);
             location.href="rec.html";
         }      
     }
@@ -92,15 +93,44 @@ $(".menu-items td").on({
     mouseenter: function () {
         $(this).children('img').css({'width': '400px', 'height': '300px', 'transition': '0.5s'});
     },
+    
     mouseleave: function () {
         $(this).children('img').css({'width': '350px', 'height': '250px'});
-        $('.reveal-checkout').css({'background-color': 'lightskyblue', 'transition': '0.5s'});
+    }
+});
+
+$('.checkout').on('mouseenter', function() {
+    $('.reveal-checkout').css({'background-color': 'lightskyblue', 'transition': '0.5s'});
+});
+
+$(document).on('mouseenter', '.order-name-container p', function() {
+    $('.order-name-container p').removeClass('hovered');
+    $('.order-name-container p').css({'background-color': 'ghostwhite', 'color': 'black', 'transition': '0.2s'});
+    $(this).css({'background-color': 'rgb(70, 70, 70)', 'color': 'ghostwhite', 'transition': '0.2s'});
+    $(this).toggleClass('hovered');
+
+    let pastOrder = currentUser.pastOrders.find(obj => {return obj.orderTitle == $(this).text()});
+
+    $('.previous-order-listings').empty();
+    $('.previous-order-listings').append(`<h1>${pastOrder.orderTitle}</h1>`);
+
+    for(i = 0; i < pastOrder.name.length; i++) {
+        $('.previous-order-listings').append(`
+            <div class="previous-order">
+                <img src="images/${pastOrder.name[i]}.jpg" alt="">
+                <h2>X <span class="quantity">${pastOrder.quantity[i]}</span><br><span class="name">${pastOrder.name[i]}</span></h2>
+                <div>
+                    <p>$${Math.round((pastOrder.quantity[i] * pastOrder.price[i] + Number.EPSILON) * 100) / 100}</p>
+                    <button onclick="addToCart('${pastOrder.name[i]}', ${pastOrder.price[i]}, ${pastOrder.quantity[i]})">Add To Checkout</button>
+                </div>
+            </div>
+        `);
     }
 });
 
 // When menu item is clicked, this function will append it to the cart and turn the reveal bar blue
 // to notify that item has been added. Any particular item cannot be added more than once
-function addToCart(name, price) {
+function addToCart(name, price, quantity = 1) {
     if($(`#${name.replace(/\s+/g, '').replace('&', '\\&')}`).length == 0) {
         $('.reveal-checkout').css({'background-color': 'blue', 'transition': '0.5s'});
 
@@ -115,10 +145,10 @@ function addToCart(name, price) {
 
                 <div class="quantity-change">
                     <ion-icon name="caret-down-circle" class="quantity-button" onclick="quantityChange(this, false, ${price})"></ion-icon>
-                    <p class="quantity">1</p>
+                    <p class="quantity">${quantity}</p>
                     <ion-icon name="caret-up-circle" class="quantity-button" onclick="quantityChange(this, true, ${price})"></ion-icon>
                     <p>&emsp;</p>
-                    <p class="checkout-item-final-price">$${price}</p>
+                    <p class="checkout-item-final-price">$${Math.round((quantity * price + Number.EPSILON) * 100) / 100}</p>
                 </div>
             </div>
             <p style="display: none;" class="item-name">${name}</p>
@@ -257,13 +287,12 @@ $('.final-checkout').on('click', function() {
             let quantity = Number($(this).find('.quantity').html());
             let price = Number($(this).children('.item-price').html());
             
-            order.pushOrder(name, quantity, price);
-            currentUser.checkoutOrder = order;
-
-            location.href="checkout.html";
+            order.pushOrder(name, quantity, price);  
         });
 
+        currentUser.checkoutOrder = order;
 
+        location.href="checkout.html";
     }
     else {
         alert('Add items to your cart!');
@@ -277,7 +306,15 @@ $(window).on('load', function() {
         $('.first-last-name').html(`${currentUser.name} ${currentUser.lastName}`);
     }
 
-    if($('.menu-body').length > 0 && currentUser.checkoutOrder != undefined) {
+    if($('.previous-holder').length > 0) {
+        let length = currentUser.pastOrders.length;
+
+        for(i = 0; i < length; i++) {
+            $('.order-name-container').append(`<p>${currentUser.pastOrders[i].orderTitle}</p>`);
+        }
+    }
+
+    if(($('.menu-body').length > 0 || $('.previous-holder').length > 0) && currentUser.checkoutOrder != undefined) {
         for(i = 0; i < currentUser.checkoutOrder.name.length; i++) {
             $('.checkout-items').append(`
             <div class="checkout-item" id="${currentUser.checkoutOrder.name[i].replace(/\s+/g, '')}">
