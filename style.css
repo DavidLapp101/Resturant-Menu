@@ -505,6 +505,63 @@ font-family: 'Montserrat', sans-serif; */
     color: white;
     text-decoration: underline;
 }
+/* ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////    FORGET PASSWORD    ////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+.full-forget{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    min-height: 600px;
+    justify-content: center;
+    background-color: whitesmoke;
+    font-family: 'Montserrat', sans-serif;
+}
+.forget-inputs{
+    padding: 15px 0 15px 10px;
+    font-size: 20;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid rgb(226, 226, 226);
+    width: 300px;
+    outline: none;
+    transition: 0.3s;
+    border-radius: 5px;
+}
+.forget-inputs:focus{
+    padding: 15px 0 15px 10px;
+    font-size: 20;
+    background-color: transparent;
+    width: 300px;
+    background-color: rgb(226, 226, 226);
+}
+.forget-labels{
+    color: grey;
+    font-size: 0.8rem;
+}
+.forget-password-title{
+    text-align: center;
+    font-size: 1.7rem;
+    font-weight: 600;
+}
+.forget-password-submit{
+    margin-top: 20px;
+    padding: 15px 0 15px 0;
+    font-size: 20;
+    background-color: rgb(226, 226, 226);
+    width: 300px;
+    border:none;
+    color: grey;
+    transition: 0.3s;
+    border-radius: 5px;
+}
+.forget-password-submit:hover{
+    background-color: lightskyblue;
+    color: white;
+    text-decoration: underline;
+}
 /*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////    HEADER  /  NAV BAR    ////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
