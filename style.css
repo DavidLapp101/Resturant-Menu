@@ -630,6 +630,10 @@ header ul li a:hover {
     display: column;
 }
 
+.nav-icons:hover {
+    opacity: 0.5;
+}
+
 .prof-options p, a {
     display: block;
     margin-top: 7px;
@@ -664,7 +668,174 @@ header ul li a:hover {
 //////////////////////////////    FOOTER CSS    /////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
+.copyright {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    height: 250px;
+    background-color: rgba(36, 34, 34, 0.7);
+    margin: 7% 0 5% 0;
+}
 
+.goober-logo-con {
+    display: flex;
+    justify-content: center;
+    width: 30%;
+    height: 160px;
+    overflow: hidden;
+    background-size: cover;
+    margin: 48px 0 0 0;
+}
+
+.goober-logo {
+    width: 160px;
+    height: 160px;
+    overflow: hidden;
+    background-size: cover;
+    border-radius: 50%;
+}
+
+.goober-logo img {
+    width: 160px;
+    height: 160px;
+}
+
+.column-tool {
+    width: 30%;
+    height: 160px;
+    display: column;
+    justify-content: center;
+    margin: 70px 0 0 0;
+}
+
+.creators {
+    width: 70%;
+    min-height: 20px;
+    font-family: "Lato";
+    font-size: 2rem;
+    color: white;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.git-creators {
+    display: flex;
+    justify-content: center;
+    width: 70%;
+    border: 3px solid white;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 2rem;
+    margin: 0 auto;
+}
+
+.git-creators a {
+    color: white;
+    margin: 5px 0 0 0;
+    transition: 0.6s;
+}
+
+.git-creators a:hover {
+    color: rgb(45, 45, 247);
+}
+
+.git-name-con {
+    display: column;
+    justify-content: center;
+    min-width: 100px;
+}
+
+.git-name {
+    min-width: 50px;
+    text-align: center;
+    color: white;
+    font-size: 0.6rem;
+    font-family: "Lato";
+    margin: 0 0 5px 0;
+}
+
+.mid {
+    margin: 0 30px 0 30px;
+}
+
+.footer-txt {
+    width: 100%;
+    height: 60px;
+    font-family: "Lato";
+    text-align: center;
+    font-size: .8rem;
+    color: rgba(255, 255, 255, 0.5);
+    margin: 10px auto;
+}
+
+.reach-out-con {
+    display: column;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    font-family: "Lato";
+    font-size: 32px;
+    width: 30%;
+    height: 160px;
+    margin: 68px 0 0 0;
+}
+
+.reach-out-text-con {
+    display: flex;
+    justify-content: center;
+}
+
+.reach-out-input {
+    font-size: 1.2rem;
+    font-family: "Lato";
+    color: white;
+    width: 100%;
+    height: 45px;
+    border: 2px solid white;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+    padding-left: 15px;
+    background-color: rgba(36, 34, 34, 0.7);
+}
+
+.reach-out-send {
+    font-size: 1.2rem;
+    font-family: "Lato";
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    background-color: lightskyblue;
+    width: 25%;
+    height: 45px;
+    border: 2px solid lightskyblue;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    transition: 0.6s;
+    cursor: pointer;
+}
+
+.reach-out-send:hover {
+    background-color: white;
+    border: 2px solid white;
+    color: lightskyblue;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+}
+
+.social-icons {
+    font-size: 1.3rem;
+    text-decoration: none;
+    color: white;
+    transition: 0.6s;
+    margin: 10px
+}
+
+.social-icons:hover {
+    color: rgb(45, 45, 247);
+}
 
 /*///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////    SECTION    ////////////////////////////////////////////////////////////////////////////////////////////
@@ -878,8 +1049,34 @@ header ul li a:hover {
 //////////////////////////////    WELCOME PAGE CSS    ///////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
+.body-welcome-page {
+    background-color: black;
+}
+
 .wel-to-goo {
     width: 100%;
-    height: 100vh;
-    background-image: url("images/");
+    height: 860px;
+    background-image: url("images/goober.jpg");
+    background-size: cover;
+    padding: 160px 0 0 0;
+}
+
+.about-us {
+    width: 88%;
+    height: 350px;
+    text-align: center;
+    font-family: "Lato";
+    font-size: 2rem;
+    color: white;
+    border: 3px solid white;
+    border-radius: 20px;
+    padding-top: 18px;
+    margin: 25% auto;
+}
+
+.about-us h1 {
+    text-align: center;
+    color: white;
+    font-family: "Lato";
+    font-size: 3.5rem;
 }
