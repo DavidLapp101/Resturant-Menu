@@ -34,26 +34,25 @@
                     <div class="underline"></div>
 
                     <form>
-                        <input class="cc-txt-box" type="text" maxlength="16" placeholder="Card Number XXXX-XXXX-XXXX-XXXX">
-                    </form>
-                    <form>
-                        <input class="sml-txt-box" type="text" maxlength="3" placeholder="CVV">
-                    </form>
-                    <form>
-                        <input class="txt-box" type="text" placeholder="Address">
-                    </form>
-                    <form>
+                        <input class="cc-txt-box" type="text" maxlength="16" placeholder="Card Number XXXX-XXXX-XXXX-XXXX" required>
+                    
+                        <input class="sml-txt-box" type="text" maxlength="3" placeholder="CVV" required>
+                    
+                        <input class="txt-box" type="text" placeholder="Address" required>
+                    
                         <textarea class="lrg-txt-box" type="text" placeholder="Note for driver"></textarea>
-                    </form>
-                    <form>
-                        <input class="check" type="checkbox" class="radio" value="1" name="Del/Pick[1][]"><span class="checkspan">Delivery</span>
-                    </form>
-                    <form>
-                        <input class="check" type="checkbox" class="radio" value="1" name="Del/Pick[1][]"><span class="checkspan">Pick up</span>
-                    </form>
+                    
+                        <input class="check" type="radio" class="radio" value="1" name="Del/Pick[1][]" required><span class="checkspan">Delivery</span>
+                    
+                        <input class="check" type="radio" class="radio" value="1" name="Del/Pick[1][]"><span class="checkspan">Pick up</span>
 
-                    <button onclick="checkOut()" class="checkoutbtn"><a id="cd" href="Rec.html">Checkout</a></button>
-                    <div class="underline"></div>
+                        <div class="check-total">
+                            <p>$0.00</p>
+                        </div>
+
+                        <button href="rec.html" id="cd" type="submit" onclick="checkOut()" class="checkoutbtn">Checkout</button>
+                        <div class="underline"></div>
+                    </form>
                 </div>
 
                 <div class="order-history">

@@ -682,6 +682,12 @@ header ul li a:hover {
     padding-top: 30px;
 }
 
+.info-con p {
+    font-family: "Lato";
+    font-size: 2.5rem;
+    margin: 20px 0 0 20px;
+}
+
 .underline {
     width: 90%;
     border-bottom: 3px solid lightskyblue;
@@ -794,6 +800,7 @@ header ul li a:hover {
 }
 
 .item-price {
+    font-family: "Lato";
     min-width: 50px;
     height: 50px;
     text-align: center;
@@ -801,10 +808,11 @@ header ul li a:hover {
 }
 
 .item-price p {
-    margin-top: 15px;
+    margin: 15px 5px 0 0;
 }
 
 .num-inc {
+    font-family: "Lato";
     width: 45px;
     height: 30px;
     margin: 110px 0 0 0;
