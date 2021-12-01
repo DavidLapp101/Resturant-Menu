@@ -33,12 +33,18 @@
                     <h1>Checkout</h1>
                     <div class="underline"></div>
 
-                    <form>
+                    
                         <input class="txt-box" type="text" id="order-title-text" value="" placeholder="Enter a name for your order">
+                        
+                        <div class="cash-credit-con">
+                                <button class="cash-credit-btn">Credit</button>
+                        
+                                <button class="cash-credit-btn">Cash</button>
+                        </div>
+
+                        <!-- <input class="cc-txt-box" type="text" id="card-num" maxlength="16" placeholder="Card Number XXXX-XXXX-XXXX-XXXX">
                     
-                        <input class="cc-txt-box" type="text" id="card-num" maxlength="16" placeholder="Card Number XXXX-XXXX-XXXX-XXXX">
-                    
-                        <input class="sml-txt-box" type="text" id="card-cvv" maxlength="3" placeholder="CVV">
+                        <input class="sml-txt-box" type="text" id="card-cvv" maxlength="3" placeholder="CVV"> -->
                     
                         <input class="txt-box" type="text" id="user-address" placeholder="Address">
                     
@@ -47,12 +53,12 @@
                         <input class="check" type="radio" class="radio" value="1" name="Del/Pick[1][]"><span class="checkspan">Delivery</span>
                     
                         <input class="check" type="radio" class="radio" value="1" name="Del/Pick[1][]"><span class="checkspan">Pick up</span>
-                    </form>
+                    
                         <div class="check-total">
                             <p>$0.00</p>
                         </div>
                 
-                    <button class="checkoutbtn"><p>Checkout</p></button>
+                    <button class="checkoutbtn">Checkout</button>
                     <div class="underline"></div>
                 </div>
 
