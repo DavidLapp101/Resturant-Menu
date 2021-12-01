@@ -89,13 +89,15 @@ function removeCheckout(element) {
 *////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Makes it so that menu items grow a bit on hover
-$(".menu-items td").on({
+$(".menu-item").on({
     mouseenter: function () {
         $(this).children('img').css({'width': '400px', 'height': '300px', 'transition': '0.5s'});
+        $(this).children('p').css({'color': 'blue', 'transition': '0.5s'});
     },
     
     mouseleave: function () {
         $(this).children('img').css({'width': '350px', 'height': '250px'});
+        $(this).children('p').css({'color': 'lightskyblue', 'transition': '0.5s'});
     }
 });
 

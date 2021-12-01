@@ -35,7 +35,6 @@
 
 .menu {
     background-color: gainsboro;
-    height: 1500px;
     border-left: solid lightskyblue 15px;
 }
 
@@ -126,12 +125,18 @@
     margin: 0 auto;
 }
 
+.grid-menu {
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
 .menu-title {
     padding: 75px 0 50px 50px;
 }
 
-.menu-items td {
+.menu-items .menu-item {
     padding: 0 40px;
+    padding-bottom: 50px;
 } 
 
 .menu-items img {
