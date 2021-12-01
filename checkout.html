@@ -18,7 +18,7 @@
             <li><ion-icon name="cart" class="nav-icons visited"></ion-icon></li>
             <li><div class="prof"><ion-icon name="person-circle-outline" class="nav-icons"></ion-icon><span class="signout">
                 <div class="prof-options">
-                <p>Joe Mama</p>
+                <p class="first-last-name">Joe Mama</p>
                 <a href="welome-page.html">Home</a>
                 <a href="#">Profile</a>
                 <a href="index.html">Sign Out</a>
@@ -34,30 +34,31 @@
                     <div class="underline"></div>
 
                     <form>
-                        <input class="cc-txt-box" type="text" maxlength="16" placeholder="Card Number XXXX-XXXX-XXXX-XXXX" required>
+                        <input class="txt-box" type="text" id="order-title-text" value="" placeholder="Enter a name for your order">
                     
-                        <input class="sml-txt-box" type="text" maxlength="3" placeholder="CVV" required>
+                        <input class="cc-txt-box" type="text" id="card-num" maxlength="16" placeholder="Card Number XXXX-XXXX-XXXX-XXXX">
                     
-                        <input class="txt-box" type="text" placeholder="Address" required>
+                        <input class="sml-txt-box" type="text" id="card-cvv" maxlength="3" placeholder="CVV">
+                    
+                        <input class="txt-box" type="text" id="user-address" placeholder="Address">
                     
                         <textarea class="lrg-txt-box" type="text" placeholder="Note for driver"></textarea>
-                    
-                        <input class="check" type="radio" class="radio" value="1" name="Del/Pick[1][]" required><span class="checkspan">Delivery</span>
+                
+                        <input class="check" type="radio" class="radio" value="1" name="Del/Pick[1][]"><span class="checkspan">Delivery</span>
                     
                         <input class="check" type="radio" class="radio" value="1" name="Del/Pick[1][]"><span class="checkspan">Pick up</span>
-
+                    </form>
                         <div class="check-total">
                             <p>$0.00</p>
                         </div>
-
-                        <button href="rec.html" id="cd" type="submit" onclick="checkOut()" class="checkoutbtn">Checkout</button>
-                        <div class="underline"></div>
-                    </form>
+                
+                    <button class="checkoutbtn"><p>Checkout</p></button>
+                    <div class="underline"></div>
                 </div>
 
                 <div class="order-history">
                     
-                    <div class="customer-order-item">
+                    <!-- <div class="customer-order-item">
                         <div class="history-item-name">Random food</div>
                         <div class="order-his-con">
                             <div class="item-pic">
@@ -103,7 +104,7 @@
                             </form>
                             <button class="rem-btn" onclick="removeCheckout(this)">Remove</button>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </section>
