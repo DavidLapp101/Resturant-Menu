@@ -1,6 +1,12 @@
 var currentUser;
 var currentEmail;
 var emailHolder = '2tgewg3g3%&^j$';
+var adminEmail='admin@goobereats.com'
+var adminPwd='admin1'
+var usersEmail;
+var usersFirstName;
+var usersLastName;
+var usersPassword;
 
 class Customer {
     constructor(name, lastName) {
@@ -36,6 +42,23 @@ $(window).on('load', function() {
     currentUser = JSON.parse(localStorage.getItem(email));
     console.log(currentUser);
  });
+
+$(window).on('load', function(){
+    let fullArr = JSON.parse(localStorage.getItem('fullArr'));
+    let tempname=currentUser.name;
+    for(let f=0; f<=fullArr.length-1; f++){
+        if(fullArr[f].firstName==tempname){
+            usersEmail=fullArr[f].email;
+            usersFirstName=fullArr[f].firstName;
+            usersLastName=fullArr[f].lastName;
+            usersPassword=fullArr[f].psw
+        }
+    }
+     $('.profile-users-name').html(`${usersFirstName} ${usersLastName}`);
+     $('.profile-users-username').html(`${usersEmail}`);
+     $('.profile-users-email').html(`${usersEmail}`);
+     $('.profile-users-password').html(`${usersPassword}`);
+})
 
  /*///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////    NAV BAR JS    /////////////////////////////////////////////////////////////////////////////////////////
@@ -239,17 +262,22 @@ const signUpPage =i=> {
 
 //functionality for sign in page
 function signInPage(i){
-    let email = document.getElementById('email').value, psw = document.getElementById('pwd').value;
-    let fullArr = JSON.parse(localStorage.getItem('fullArr')) || [];
-    if(JSON.parse(localStorage.getItem('fullArr')).some(data => data.email.toLowerCase()== email && data.psw == psw)
-    &&fullArr.length){
-        currentUser = JSON.parse(localStorage.getItem(email));
-        currentEmail = email;
-
-        location.href="welome-page.html";
+    if(document.getElementById('email').value==adminEmail && document.getElementById('pwd').value==adminPwd){
+        location.href="manager-page.html";
     }
-    else{
-        alert('Incorrect login credentials')
+        else{
+        let email = document.getElementById('email').value, psw = document.getElementById('pwd').value;
+        let fullArr = JSON.parse(localStorage.getItem('fullArr')) || [];
+        if(JSON.parse(localStorage.getItem('fullArr')).some(data => data.email.toLowerCase()== email && data.psw == psw)
+        &&fullArr.length){
+            currentUser = JSON.parse(localStorage.getItem(email));
+            currentEmail = email;
+            
+            location.href="welome-page.html";
+        }
+        else{
+            alert('Incorrect login credentials')
+        }
     }
     i.preventDefault();
 }
@@ -304,6 +332,7 @@ $('.final-checkout').on('click', function() {
 $(window).on('load', function() { 
     if($('.first-last-name').length > 0) {
         $('.first-last-name').html(`${currentUser.name} ${currentUser.lastName}`);
+
     }
 
     if($('.previous-holder').length > 0) {
