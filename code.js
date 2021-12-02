@@ -2,8 +2,8 @@ var currentUser;
 var currentEmail;
 var managerMenu;
 var deletedItems;
-var adminEmail='admin@goobereats.com'
-var adminPwd='admin1'
+var adminEmail='admin@goobereats.com';
+var adminPwd='admin1';
 var usersEmail;
 var usersFirstName;
 var usersLastName;
@@ -45,8 +45,8 @@ $(window).on('unload', function() {
 });
 
 $(window).on('load', function() { 
-    let email = localStorage.getItem('2tgewg3g3%&^j$');
-    currentUser = JSON.parse(localStorage.getItem(email));
+    currentEmail = localStorage.getItem('2tgewg3g3%&^j$');
+    currentUser = JSON.parse(localStorage.getItem(currentEmail));
 
     managerMenu = localStorage.getItem('vggd%^DI*65');
     deletedItems = localStorage.getItem('noi()*%8537f7');
@@ -67,7 +67,7 @@ $(window).on('load', function(){
      $('.profile-users-username').html(`${usersEmail}`);
      $('.profile-users-email').html(`${usersEmail}`);
      $('.profile-users-password').html(`${usersPassword}`);
-})
+});
 
  /*///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////    NAV BAR JS    /////////////////////////////////////////////////////////////////////////////////////////
@@ -377,6 +377,9 @@ const signUpPage =i=> {
 //functionality for sign in page
 function signInPage(i){
     if(document.getElementById('email').value==adminEmail && document.getElementById('pwd').value==adminPwd){
+        currentUser = JSON.parse(localStorage.getItem(adminEmail));
+        currentEmail = adminEmail;
+
         location.href="manager-page.html";
     }
         else{
@@ -449,6 +452,12 @@ $(window).on('load', function() {
     if($('.first-last-name').length > 0) {
         $('.first-last-name').html(`${currentUser.name} ${currentUser.lastName}`);
 
+    }
+
+    if(currentEmail == adminEmail && $('.first-last-name').length > 0) {
+        $('.first-last-name').after(`
+            <a href="manager-page.html">Edit Menu</a>
+        `).remove();
     }
 
     if($('.previous-holder').length > 0) {
