@@ -412,3 +412,11 @@ $(window).on('load', function() {
 //         }
 //     }
 //  });
+
+//PROFILE JS
+//puts placeholders in user info tab
+$(window).on('load', function(){
+    $('.profile-settings-first-name').attr('placeholder', usersFirstName);
+    $('.profile-settings-last-name').attr('placeholder', usersLastName);
+    $('.profile-settings-email').attr('placeholder', usersEmail)
+})
