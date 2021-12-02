@@ -38,14 +38,26 @@
                         <input class="txt-box" type="text" id="order-title-text" value="" placeholder="Enter a name for your order">
                         
                         <div class="cash-credit-con">
-                                <button class="cash-credit-btn">Credit</button>
+                            <button class="cash-credit-btn credit-btn">Credit</button>
                         
-                                <button class="cash-credit-btn">Cash</button>
+                            <button class="cash-credit-btn cash-btn">Cash</button>
+                            
+                            <div class="tip-option-con">
+                                <button class="tip-btn">Tip</button>
+                                <div class="tip-content tip-options">
+                                    <button class="five">$5.00</button>
+                                    <button class="ten">$10.00</button>
+                                    <button class="fifteen">$15.00</button>
+                                    <button class="twenty tip-con-bottom">$20.00</button>
+                                </div>
+                            </div>
                         </div>
-
+                        
+                        <div class="credit-info credit">
                         <!-- <input class="cc-txt-box" type="text" id="card-num" maxlength="16" placeholder="Card Number XXXX-XXXX-XXXX-XXXX">
                     
                         <input class="sml-txt-box" type="text" id="card-cvv" maxlength="3" placeholder="CVV"> -->
+                        </div>
                     
                         <input class="txt-box" type="text" id="user-address" placeholder="Address">
                     
@@ -55,8 +67,13 @@
                     
                         <input class="check" type="radio" class="radio" value="1" name="Del/Pick[1][]"><span class="checkspan">Pick up</span>
                     
-                        <div class="check-total">
-                            <p>$0.00</p>
+                        <div class="total-tip-con">
+                            <div class="check-total">
+                                <p>$0.00</p>
+                            </div>
+                            <div class="tip">
+                                <p class="user-tip"> / Tip: <!-- <span class="gift">$5.00</span><button class="remove-tip" onclick="removeTip(this)">Remove</button> --> </p>
+                            </div>
                         </div>
                 
                     <button class="checkoutbtn">Checkout</button>
