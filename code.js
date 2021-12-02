@@ -94,8 +94,11 @@ $("input:checkbox").on('click', function() {
 });
 
 $('.checkoutbtn').on('click', function() {
-    if($('#order-title-text').val() == '') {
-        alert('Please enter a name for your order!');
+    if(($('#order-title-text').val() == '')
+    ||($('#card-num').val() == '')
+    ||($('#card-cvv').val() == '')
+    ||($('#user-address').val() == '')) {
+        alert('Please fill in all above!');
     }
     else {
         currentUser.checkoutOrder.orderTitle = $('#order-title-text').val();
@@ -111,7 +114,7 @@ $('.checkoutbtn').on('click', function() {
 /*///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////    REMOVE FROM CART JS    ////////////////////////////////////////////////////////////////////////////////
 *////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+//allows you to remove items from the cheack out cart
 function removeCheckout(element) {
     $(element).parent().parent().remove();
 }

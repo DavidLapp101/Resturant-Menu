@@ -2,6 +2,7 @@
 
 .menu-body {
     font-family: 'Montserrat', sans-serif;
+    background-color: gainsboro;
 }
 
 .menu-background {
@@ -935,13 +936,17 @@ header ul li a:hover {
 //////////////////////////////    FOOTER CSS    /////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
+.footer-spacing {
+    margin: 10% 0 7% 0;
+}
+
 .copyright {
     display: flex;
     justify-content: space-around;
     width: 100%;
     height: 250px;
-    background-color: rgba(36, 34, 34, 0.7);
-    margin: 7% 0 5% 0;
+    background-color: rgba(26, 24, 24, 0.9);
+    
 }
 
 .goober-logo-con {
@@ -1120,7 +1125,7 @@ header ul li a:hover {
 
 .info-con {
     width: 40%;
-    height: 900px;
+    min-height: 1120px;
     margin: 60px 0 40px 60px;
     border-radius: 15px;
     background-color: white;
@@ -1131,6 +1136,12 @@ header ul li a:hover {
     font-family: "Lato";
     text-align: center;
     padding-top: 30px;
+}
+
+.info-con p {
+    font-family: "Lato";
+    font-size: 2.5rem;
+    margin: 20px 0 0 20px;
 }
 
 .underline {
@@ -1161,7 +1172,7 @@ header ul li a:hover {
     width: 93.5%;
     height: 5%;
     padding-left: 5px;
-    margin: 60px 0 0 20px;
+    margin: 30px 0 0 20px;
     border: 1.5px solid grey;
     border-radius: 10px;
 }
@@ -1190,7 +1201,7 @@ header ul li a:hover {
     height: 6%;
     margin: 10% 25% 0 25%;
     font-family: "Lato";
-    font-size: 1.2rem;
+    font-size: 2.2rem;
     color: white;
     background-color: lightskyblue;
     border: 2px solid white;
@@ -1202,9 +1213,25 @@ header ul li a:hover {
     background-color: rgba(136, 207, 252, 0.9)
 }
 
-.checkoutbtn p {
-    text-decoration: none;
+.cash-credit-con {
+    display: flex;
+}
+
+.cash-credit-btn{
+    width: 100px;
+    height: 50px;
+    font-family: "Lato";
+    font-size: 1.4rem;
     color: white;
+    background-color: lightskyblue;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 30px 0 0 20px;
+}
+
+.cash-credit-btn:hover {
+    background-color: rgba(136, 207, 252, 0.9);
 }
 
 /*///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1219,10 +1246,16 @@ header ul li a:hover {
 }
 
 .history-item-name {
-    min-width: 150px;
+    width: 150px;
     height: 20px;
     font-family: "Lato";
-    margin: 10px 0 0 20px;
+    font-size: 1rem;
+    text-align: center;
+    background-color: white;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    margin: 10px 0 2px 20px;
+    box-shadow: 2px 2px 2px 2px rgba(194, 184, 184, .4);
 }
 
 .order-his-con {
@@ -1245,6 +1278,7 @@ header ul li a:hover {
 }
 
 .item-price {
+    font-family: "Lato";
     min-width: 50px;
     height: 50px;
     text-align: center;
@@ -1252,10 +1286,11 @@ header ul li a:hover {
 }
 
 .item-price p {
-    margin-top: 15px;
+    margin: 15px 5px 0 0;
 }
 
 .num-inc {
+    font-family: "Lato";
     width: 45px;
     height: 30px;
     margin: 110px 0 0 0;

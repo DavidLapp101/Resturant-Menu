@@ -34,29 +34,32 @@
                     <h1>Checkout</h1>
                     <div class="underline"></div>
 
-                    <form>
-                        <input class="cc-txt-box" type="text" maxlength="16" placeholder="Card Number XXXX-XXXX-XXXX-XXXX">
-                    </form>
-                    <form>
-                        <input class="sml-txt-box" type="text" maxlength="3" placeholder="CVV">
-                    </form>
-                    <form>
-                        <input class="txt-box" type="text" placeholder="Address">
-                    </form>
-                    <form>
+                    
                         <input class="txt-box" type="text" id="order-title-text" value="" placeholder="Enter a name for your order">
-                    </form>
-                    <form>
-                        <textarea class="lrg-txt-box" type="text" placeholder="Note for driver"></textarea>
-                    </form>
-                    <form>
-                        <input class="check" type="checkbox" class="radio" value="1" name="Del/Pick[1][]"><span class="checkspan">Delivery</span>
-                    </form>
-                    <form>
-                        <input class="check" type="checkbox" class="radio" value="1" name="Del/Pick[1][]"><span class="checkspan">Pick up</span>
-                    </form>
+                        
+                        <div class="cash-credit-con">
+                                <button class="cash-credit-btn">Credit</button>
+                        
+                                <button class="cash-credit-btn">Cash</button>
+                        </div>
 
-                    <button class="checkoutbtn"><p>Checkout</p></button>
+                        <!-- <input class="cc-txt-box" type="text" id="card-num" maxlength="16" placeholder="Card Number XXXX-XXXX-XXXX-XXXX">
+                    
+                        <input class="sml-txt-box" type="text" id="card-cvv" maxlength="3" placeholder="CVV"> -->
+                    
+                        <input class="txt-box" type="text" id="user-address" placeholder="Address">
+                    
+                        <textarea class="lrg-txt-box" type="text" placeholder="Note for driver"></textarea>
+                
+                        <input class="check" type="radio" class="radio" value="1" name="Del/Pick[1][]"><span class="checkspan">Delivery</span>
+                    
+                        <input class="check" type="radio" class="radio" value="1" name="Del/Pick[1][]"><span class="checkspan">Pick up</span>
+                    
+                        <div class="check-total">
+                            <p>$0.00</p>
+                        </div>
+                
+                    <button class="checkoutbtn">Checkout</button>
                     <div class="underline"></div>
                 </div>
 
@@ -113,8 +116,50 @@
             </div>
         </section>
 
-        <footer>
+        <footer class="copy-right-backdrop">
+            <div class="copyright">
+                <div class="goober-logo-con">
+                    <div class="goober-logo">
+                        <img src="images/goober-footer.png">
+                    </div>
+                </div>
 
+                <div class="column-tool">
+                    <div class="creators">Site Creators</div>
+                    <div class="git-creators">
+                        <div class="git-name-con">
+                            <a href="https://github.com/DavidLapp101"><ion-icon name="logo-github"></ion-icon></a>
+                            <div class="git-name">David L.</div>
+                        </div>
+                        <div class="git-name-con">
+                            <a href="https://github.com/gcaz"><ion-icon class="mid" name="logo-github"></ion-icon></a>
+                            <div class="git-name">Zach G.</div>
+                        </div>
+                        <div class="git-name-con">
+                            <a href="https://github.com/Matt-Hackerman"><ion-icon name="logo-github"></ion-icon></a>
+                            <div class="git-name">Matt H.</div>
+                        </div>
+                    </div>
+                    <div class="footer-txt">
+                        <p>This site was Designed and Programed with <ion-icon  name="heart-circle-sharp"></ion-icon> feel free to check out the git hub links above!</p>
+                    </div>
+                </div>
+
+                <div class="reach-out-con">Reach Out
+                    <div class="reach-out-text-con">
+                        <form>
+                            <input class="reach-out-input" type="text" placeholder="Email">
+                        </form>
+                        <button class="reach-out-send">Send</button>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://twitter.com/?lang=en" class="social-icons"><ion-icon name="logo-twitter"></ion-icon></a>
+                        <a href="https://www.facebook.com/" class="social-icons"><ion-icon name="logo-facebook"></ion-icon></a>
+                        <a href="https://www.snapchat.com/" class="social-icons"><ion-icon name="logo-snapchat"></ion-icon></a>
+                        <a href="https://www.linkedin.com/" class="social-icons"><ion-icon name="logo-linkedin"></ion-icon></a>
+                    </div>
+                </div>
+            </div>
         </footer>
 
         <!-- Ion icons and js page link -->
