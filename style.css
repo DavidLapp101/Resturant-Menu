@@ -776,7 +776,10 @@ header ul li a:hover {
 }
 .profile-body{
     background-color: whitesmoke;
+    font-family: 'Montserrat', sans-serif;
 }
+
+/* OVERVIEW */
 .overview-content-container{
     height: 400px;
     min-width: 1000px;
@@ -799,6 +802,7 @@ header ul li a:hover {
     border-radius: 25px;
     height: 100%;
     width: 45%;
+    padding: 20px;
 }
 .profile-user-settings-title{
     color: grey;
@@ -818,7 +822,7 @@ header ul li a:hover {
 .profile-user-info{
     color: grey;
     border-top: 2px solid grey;
-    padding: 0 0 0 20px;
+    padding: 0 20px 0 30px;
 }
 .profile-line{
     border-top: 2px solid grey;
@@ -836,6 +840,96 @@ header ul li a:hover {
 }
 .password-profile{
     border-bottom: 2px solid grey;
+}
+.profile-order-history-title{
+    color: grey;
+    border-bottom: 2px solid grey;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 100px;
+}
+.profile-order-history-text{
+    font-size: 1.5rem;
+    text-align: center;
+    color: grey;
+}
+.profile-saved-order-link{
+    text-decoration: underline;
+    color: grey;
+    transition: 0.5s;
+}
+.profile-saved-order-link:hover{
+    color: lightgrey;
+}
+
+/* USER SETTINGS */
+.User-settings-overview{
+    padding: 175px 0 0 50;
+}
+.user-info-flex{
+    display: flex;
+}
+.user-settings-title{
+    font-size: 2rem;
+    font-weight: 600;
+    padding-bottom: 20px;
+}
+.user-settings-title-text{
+    border-bottom: 2px solid grey;
+    width: 1150px;
+    padding-bottom: 20px;
+}
+.profile-settings-title{
+    font-size: 1.5rem;
+    font-weight: 500;
+    padding: 20px 0 10px 0;
+}
+.profile-settings-first-name-label{
+    padding: 0 20px 10px 0;
+}
+.profile-text-box{
+    margin: 0 35px 15px 0;
+    background-color: transparent;
+    width: 300px;
+    height: 40px;
+    border: 2px solid grey;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    padding: 0 0 0 10px;
+}
+.profile-settings-submit{
+    float: right;
+    height: 50px;
+    width: 150px;
+    border-radius: 10px;
+    border: lightskyblue;
+    background-color: lightskyblue;
+    font-size: 1.5rem;
+    transition: 0.5s;
+}
+.profile-settings-submit:hover{
+    background-color: grey;
+    color: lightskyblue;
+}
+.delete-account-title{
+    font-size: 1.5rem;
+    font-weight: 500;
+    padding: 20px 0 10px 0;
+}
+.delete-account-submit{
+    float: right;
+    height: 50px;
+    width: 300px;
+    border-radius: 10px;
+    border: lightskyblue;
+    background-color: lightskyblue;
+    font-size: 1.5rem;
+    transition: 0.5s;
+    margin-bottom: 20px;
+}
+.delete-account-submit:hover{
+    background-color: grey;
+    color: lightskyblue;
 }
 /*///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////    FOOTER CSS    /////////////////////////////////////////////////////////////////////////////////////////
