@@ -78,6 +78,73 @@ $('.checkoutbtn').on('click', function() {
     }
 });
 
+//adds classes for your crdit card info and prevents you from adding more then one crdit info class
+$('.credit-btn').on('click', function() {
+    if($('.credit-info').children().length > 0) {
+        alert("You have already chosen credit")
+    }
+    else {
+    $('.credit-info').append(`
+    <input class="cc-txt-box" type="text" id="card-num" maxlength="16" placeholder="Card Number XXXX-XXXX-XXXX-XXXX">
+                        
+    <input class="sml-txt-box" type="text" id="card-cvv" maxlength="3" placeholder="CVV"></input>`);
+    }
+});
+
+//removes credit car classes if you chose to pay cash
+$('.cash-btn').on('click', function() {
+    $('.credit').children().remove()
+});
+
+//adds 5.00 tip
+$('.five').on('click', function() {
+    if($('.user-tip').children().length > 1) {
+        alert("You have already tipped")
+    }
+    else {
+    $('.user-tip').append(`
+    <span class="gift">$5.00</span><button class="remove-tip" onclick="removeTip(this)">Remove</button>`);
+    }
+});
+
+//adds 10.00 tip
+$('.ten').on('click', function() {
+    if($('.user-tip').children().length > 1) {
+        alert("You have already tipped")
+    }
+    else {
+    $('.user-tip').append(`
+    <span class="gift">$10.00</span><button class="remove-tip" onclick="removeTip(this)">Remove</button>`);
+    }
+});
+
+//adds 15.00 tip
+$('.fifteen').on('click', function() {
+    if($('.user-tip').children().length > 1) {
+        alert("You have already tipped")
+    }
+    else {
+    $('.user-tip').append(`
+    <span class="gift">$15.00</span><button class="remove-tip" onclick="removeTip(this)">Remove</button>`);
+    }
+});
+
+//adds 20.00 tip
+$('.twenty').on('click', function() {
+    if($('.user-tip').children().length > 1) {
+        alert("You have already tipped")
+    }
+    else {
+    $('.user-tip').append(`
+    <span class="gift">$20.00</span><button class="remove-tip" onclick="removeTip(this)">Remove</button>`);
+    }
+});
+
+//lets you remove tips
+function removeTip(element) {
+    $(element).siblings('.gift').remove();
+    $(element).remove();
+}
 
 /*///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////    REMOVE FROM CART JS    ////////////////////////////////////////////////////////////////////////////////
