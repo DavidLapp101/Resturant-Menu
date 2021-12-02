@@ -1,6 +1,7 @@
 var currentUser;
 var currentEmail;
-var emailHolder = '2tgewg3g3%&^j$';
+var managerMenu;
+var deletedItems;
 
 class Customer {
     constructor(name, lastName) {
@@ -27,14 +28,22 @@ class Order {
 }
 
 $(window).on('unload', function() {
-    localStorage.setItem(emailHolder, currentEmail);
+    if($('.manager-page').length > 0) {
+        localStorage.setItem('vggd%^DI*65', $('.menu-items').html());
+        localStorage.setItem('noi()*%8537f7', $('.checkout-items').html());
+    }
+    saveOrder();
+
+    localStorage.setItem('2tgewg3g3%&^j$', currentEmail);
     localStorage.setItem(currentEmail, JSON.stringify(currentUser));
 });
 
 $(window).on('load', function() { 
-    let email = localStorage.getItem(emailHolder);
+    let email = localStorage.getItem('2tgewg3g3%&^j$');
     currentUser = JSON.parse(localStorage.getItem(email));
-    console.log(currentUser);
+
+    managerMenu = localStorage.getItem('vggd%^DI*65');
+    deletedItems = localStorage.getItem('noi()*%8537f7');
  });
 
  /*///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -89,13 +98,23 @@ function removeCheckout(element) {
 *////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Makes it so that menu items grow a bit on hover
-$(".menu-item").on({
-    mouseenter: function () {
+$(document).on('mouseenter', '.menu-item', function() {
+    if($('.manager-page').length > 0) {
+        $(this).children('img').css({'width': '400px', 'height': '300px', 'transition': '0.5s'});
+        $(this).children('p').css({'color': 'red', 'transition': '0.5s'}).html(`${$(this).children('p').html()} - Remove?`);
+    }
+    else {
         $(this).children('img').css({'width': '400px', 'height': '300px', 'transition': '0.5s'});
         $(this).children('p').css({'color': 'blue', 'transition': '0.5s'});
-    },
-    
-    mouseleave: function () {
+    }
+});
+
+$(document).on('mouseleave', '.menu-item', function() {
+    if($('.manager-page').length > 0) {
+        $(this).children('img').css({'width': '350px', 'height': '250px'});
+        $(this).children('p').css({'color': 'lightskyblue', 'transition': '0.5s'}).html(`${$(this).children('p').html().replace('- Remove?', '')}`);
+    }
+    else {
         $(this).children('img').css({'width': '350px', 'height': '250px'});
         $(this).children('p').css({'color': 'lightskyblue', 'transition': '0.5s'});
     }
@@ -123,7 +142,7 @@ $(document).on('mouseenter', '.order-name-container p', function() {
                 <h2>X <span class="quantity">${pastOrder.quantity[i]}</span><br><span class="name">${pastOrder.name[i]}</span></h2>
                 <div>
                     <p>$${Math.round((pastOrder.quantity[i] * pastOrder.price[i] + Number.EPSILON) * 100) / 100}</p>
-                    <button onclick="addToCart('${pastOrder.name[i]}', ${pastOrder.price[i]}, ${pastOrder.quantity[i]})">Add To Checkout</button>
+                    <button onclick="addToCart('${pastOrder.name[i]}', ${pastOrder.price[i]}, this, ${pastOrder.quantity[i]})">Add To Checkout</button>
                 </div>
             </div>
         `);
@@ -132,8 +151,23 @@ $(document).on('mouseenter', '.order-name-container p', function() {
 
 // When menu item is clicked, this function will append it to the cart and turn the reveal bar blue
 // to notify that item has been added. Any particular item cannot be added more than once
-function addToCart(name, price, quantity = 1) {
-    if($(`#${name.replace(/\s+/g, '').replace('&', '\\&')}`).length == 0) {
+function addToCart(name, price, element, quantity = 1) {
+    if($('.manager-page').length > 0) {
+        $('.reveal-checkout').css({'background-color': 'red', 'transition': '0.5s'});
+
+        $('.checkout-items').append(`
+        <div class="deleted-items">
+            <div>
+                <img src="images/${name}.jpg" alt="">
+                <p>${name}</p>
+            </div>
+            <button onclick="addToMenu('${name}', ${price}, '${$(element).attr('id')}', this)">Add To Menu</button>
+        </div>
+        `);
+
+        element.remove(); 
+    }
+    else if($(`#${name.replace(/\s+/g, '').replace('&', '\\&')}`).length == 0) {
         $('.reveal-checkout').css({'background-color': 'blue', 'transition': '0.5s'});
 
         $('.checkout-items').append(`
@@ -159,6 +193,14 @@ function addToCart(name, price, quantity = 1) {
 
         calculatePrice();
     }
+}
+
+function addToMenu(name, price, menuSlot, removed) {
+    $(`#${menuSlot}-items`).next().append(`
+        <div class="menu-item" id="${menuSlot}" onclick="addToCart('${name}', ${price}, this)"><img src="images/${name}.jpg" alt=""><p>${name} - $${price}</p></div>
+    `);
+
+    $(removed).parent().remove();
 }
 
 // Changes the quantity value and item price of specific item
@@ -282,6 +324,15 @@ function forgetPwd(i){
 
 $('.final-checkout').on('click', function() {
     if($('.final-checkout').siblings().length > 0) {
+        location.href="checkout.html";
+    }
+    else {
+        alert('Add items to your cart!');
+    }
+});
+
+function saveOrder() {
+    if($('.checkout-item').length > 0) {
         let order = new Order();
 
         $('.checkout-item').each(function() {
@@ -293,15 +344,8 @@ $('.final-checkout').on('click', function() {
         });
 
         currentUser.checkoutOrder = order;
-
-        location.href="checkout.html";
     }
-    else {
-        alert('Add items to your cart!');
-    }
-
-    console.log(currentUser.checkoutOrder);
-});
+}
 
 $(window).on('load', function() { 
     if($('.first-last-name').length > 0) {
@@ -315,8 +359,7 @@ $(window).on('load', function() {
             $('.order-name-container').append(`<p>${currentUser.pastOrders[i].orderTitle}</p>`);
         }
     }
-
-    if(($('.menu-body').length > 0 || $('.previous-holder').length > 0) && currentUser.checkoutOrder != undefined) {
+    else if(($('.menu-body').length > 0 || $('.previous-holder').length > 0) && currentUser.checkoutOrder != undefined) {
         for(i = 0; i < currentUser.checkoutOrder.name.length; i++) {
             $('.checkout-items').append(`
             <div class="checkout-item" id="${currentUser.checkoutOrder.name[i].replace(/\s+/g, '')}">
@@ -340,6 +383,10 @@ $(window).on('load', function() {
             </div>`);
 
             calculatePrice();
+
+            if(managerMenu != undefined && managerMenu != '') {
+                $('.menu-items').empty().html(managerMenu);
+            }
         }
     }
     else if($('.checkout-wrapper').length > 0) {
@@ -361,6 +408,15 @@ $(window).on('load', function() {
                 </div>
             </div>
             `);
+        }
+    }
+    else if($('.manager-page').length > 0) {
+        if(managerMenu != undefined && managerMenu != '') {
+            $('.menu-items').empty().html(managerMenu);
+
+            if(deletedItems != undefined && deletedItems != '') {
+                $('.checkout-items').html(deletedItems);
+            }
         }
     }
  });

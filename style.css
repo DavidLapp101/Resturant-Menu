@@ -127,7 +127,7 @@
 
 .grid-menu {
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: 33% 33% 33%;
 }
 
 .menu-title {
@@ -353,6 +353,51 @@
 
 .previous-order button:hover {
     background-color: rgb(137, 137, 255);
+}
+
+.manager-page {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.deleted-items {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: solid 3px black;
+    margin-bottom: 25px;
+}
+
+.deleted-items img {
+    width: 100px;
+    height: 75px;
+    border-radius: 20px;
+    margin-bottom: 15px;
+}
+
+.deleted-items p {
+    font-size: 24px;
+    text-align: center;
+    color: lightskyblue;
+    font-style: italic;
+    font-weight: 600;
+}
+
+.deleted-items button {
+    box-sizing: content-box;
+    font-size: 22px;
+    font-weight: 600;
+    padding: 10px 15px;
+    color: white;
+    height: 75px;
+    background-color: green;
+    border: solid 3px black;
+    border-radius: 15px;
+    transition: 0.4s;
+}
+
+.deleted-items button:hover {
+    box-sizing: content-box;
+    background-color: lightgreen;
 }
 
 /* font-family: 'Lato', sans-serif;
