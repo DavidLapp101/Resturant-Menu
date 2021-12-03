@@ -708,7 +708,7 @@ header ul li a:hover {
     padding: 13px 40px;
     position: absolute;
     z-index: 1;
-    margin: 35px -78px;
+    margin: 35px -120px;
 }
 
 .prof:hover .signout {
@@ -724,6 +724,7 @@ header ul li a:hover {
     min-height: 750px;
     background-color: gainsboro;
     padding: 160 0 0 10;
+    position: fixed;
 }
 .profile-icon-container{
     height: 250px;
@@ -865,7 +866,7 @@ header ul li a:hover {
 
 /* USER SETTINGS */
 .User-settings-overview{
-    padding: 175px 0 0 50;
+    padding: 175px 0 0 300;
 }
 .user-info-flex{
     display: flex;
