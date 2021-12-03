@@ -82,17 +82,7 @@ window.addEventListener("scroll", function(){
 //////////////////////////////    CHECKBOX JS    ////////////////////////////////////////////////////////////////////////////////////////
 *////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-$("input:checkbox").on('click', function() {
-    var $inputbox = $(this);
-    if ($inputbox.is(":checked")) {
-      var group = "input:checkbox[name='" + $inputbox.attr("name") + "']";
-      $(group).prop("checked", false);
-      $inputbox.prop("checked", true);
-    } else {
-      $inputbox.prop("checked", false);
-    }
-});
-
+//forces you to input data before you can purchase items
 $('.checkoutbtn').on('click', function() {
     if(($('#order-title-text').val() == '')
     ||($('#card-num').val() == '')
@@ -123,15 +113,42 @@ $('.credit-btn').on('click', function() {
     }
 });
 
-//removes credit car classes if you chose to pay cash
+//removes credit card classes if you chose to pay cash
 $('.cash-btn').on('click', function() {
-    $('.credit').children().remove()
+    $('.credit').children().remove();
 });
 
 //adds 5.00 tip
 $('.five').on('click', function() {
     if($('.user-tip').children().length > 1) {
-        alert("You have already tipped")
+        alert("You have already tipped");
+    }
+    else {
+    $('.user-tip').append(`
+    <span class="gift">$5.00</span><button class="remove-tip" onclick="removeTip(this)">Remove</button>`);
+    }
+});
+
+//allows you to put in your address for delivery
+$('.del-btn').on('click', function() {
+    if($('.address-info').children().length > 0) {
+        alert("You have already chosen delivery please input your address");
+    }
+    else {
+    $('.address-info').append(`
+    <input class="txt-box" type="text" id="user-address" placeholder="Address">`);
+    }
+});
+
+//removes adress option if you choose pickup
+$('.pick-btn').on('click', function() {
+    $('.no-del').children().remove();
+});
+
+//adds 5.00 tip
+$('.five').on('click', function() {
+    if($('.user-tip').children().length > 1) {
+        alert("You have already tipped");
     }
     else {
     $('.user-tip').append(`
@@ -142,7 +159,7 @@ $('.five').on('click', function() {
 //adds 10.00 tip
 $('.ten').on('click', function() {
     if($('.user-tip').children().length > 1) {
-        alert("You have already tipped")
+        alert("You have already tipped");
     }
     else {
     $('.user-tip').append(`
@@ -153,7 +170,7 @@ $('.ten').on('click', function() {
 //adds 15.00 tip
 $('.fifteen').on('click', function() {
     if($('.user-tip').children().length > 1) {
-        alert("You have already tipped")
+        alert("You have already tipped");
     }
     else {
     $('.user-tip').append(`
@@ -164,7 +181,7 @@ $('.fifteen').on('click', function() {
 //adds 20.00 tip
 $('.twenty').on('click', function() {
     if($('.user-tip').children().length > 1) {
-        alert("You have already tipped")
+        alert("You have already tipped");
     }
     else {
     $('.user-tip').append(`
