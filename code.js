@@ -94,11 +94,8 @@ $("input:checkbox").on('click', function() {
 });
 
 $('.checkoutbtn').on('click', function() {
-    if(($('#order-title-text').val() == '')
-    ||($('#card-num').val() == '')
-    ||($('#card-cvv').val() == '')
-    ||($('#user-address').val() == '')) {
-        alert('Please fill in all above!');
+    if($('#order-title-text').val() == '') {
+        alert('Please enter a name for your order!');
     }
     else {
         currentUser.checkoutOrder.orderTitle = $('#order-title-text').val();
@@ -110,78 +107,11 @@ $('.checkoutbtn').on('click', function() {
     }
 });
 
-//adds classes for your crdit card info and prevents you from adding more then one crdit info class
-$('.credit-btn').on('click', function() {
-    if($('.credit-info').children().length > 0) {
-        alert("You have already chosen credit")
-    }
-    else {
-    $('.credit-info').append(`
-    <input class="cc-txt-box" type="text" id="card-num" maxlength="16" placeholder="Card Number XXXX-XXXX-XXXX-XXXX">
-                        
-    <input class="sml-txt-box" type="text" id="card-cvv" maxlength="3" placeholder="CVV"></input>`);
-    }
-});
-
-//removes credit car classes if you chose to pay cash
-$('.cash-btn').on('click', function() {
-    $('.credit').children().remove()
-});
-
-//adds 5.00 tip
-$('.five').on('click', function() {
-    if($('.user-tip').children().length > 1) {
-        alert("You have already tipped")
-    }
-    else {
-    $('.user-tip').append(`
-    <span class="gift">$5.00</span><button class="remove-tip" onclick="removeTip(this)">Remove</button>`);
-    }
-});
-
-//adds 10.00 tip
-$('.ten').on('click', function() {
-    if($('.user-tip').children().length > 1) {
-        alert("You have already tipped")
-    }
-    else {
-    $('.user-tip').append(`
-    <span class="gift">$10.00</span><button class="remove-tip" onclick="removeTip(this)">Remove</button>`);
-    }
-});
-
-//adds 15.00 tip
-$('.fifteen').on('click', function() {
-    if($('.user-tip').children().length > 1) {
-        alert("You have already tipped")
-    }
-    else {
-    $('.user-tip').append(`
-    <span class="gift">$15.00</span><button class="remove-tip" onclick="removeTip(this)">Remove</button>`);
-    }
-});
-
-//adds 20.00 tip
-$('.twenty').on('click', function() {
-    if($('.user-tip').children().length > 1) {
-        alert("You have already tipped")
-    }
-    else {
-    $('.user-tip').append(`
-    <span class="gift">$20.00</span><button class="remove-tip" onclick="removeTip(this)">Remove</button>`);
-    }
-});
-
-//lets you remove tips
-function removeTip(element) {
-    $(element).siblings('.gift').remove();
-    $(element).remove();
-}
 
 /*///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////    REMOVE FROM CART JS    ////////////////////////////////////////////////////////////////////////////////
 *////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//allows you to remove items from the cheack out cart
+
 function removeCheckout(element) {
     $(element).parent().parent().remove();
 }
@@ -546,3 +476,34 @@ $(window).on('load', function(){
     $('.profile-settings-last-name').attr('placeholder', usersLastName);
     $('.profile-settings-email').attr('placeholder', usersEmail)
 })
+
+function profileChangeName(i){
+    let newFirstName=document.getElementsByClassName('profile-settings-first-name').value;
+    let newLastName=document.getElementsByClassName('profile-settings-last-name').value;
+    let fullArr = JSON.parse(localStorage.getItem('fullArr'));
+    let firstName;
+    let lastName;
+}
+
+// function forgetPwd(i){
+//     let email=document.getElementById('forget-pwd-email').value;
+//     let newPass=document.getElementById('forget-pwd').value;
+//     let fullArr = JSON.parse(localStorage.getItem('fullArr'));
+//     let firstName="1";
+//     let lastName="1";
+//     let psw=newPass
+//     for(let f=0; f<=fullArr.length-1; f++){
+//         console.log("Last Name: " + fullArr[f].firstName + ", Last Name: "+fullArr[f].lastName+", Email: "+fullArr[f].email+", Password: "+fullArr[f].psw)
+//         if(fullArr[f].email==email){
+//             firstName=fullArr[f].firstName;
+//             console.log(firstName)
+//             lastName=fullArr[f].lastName;
+//             console.log(lastName)
+//             fullArr.splice(f,1)
+//         }   
+//     } 
+//     let newData={firstName, lastName, email, psw};
+//     fullArr.push(newData)
+//     fullArr=JSON.stringify(fullArr);
+//     localStorage.setItem('fullArr', fullArr)
+// }
