@@ -46,12 +46,12 @@
                 </div>
                 <div>
                     <p class="profile-settings-title">Profile Settings</p>
-                    <form>
+                    <form onsubmit="profileChangeName(event)" autocomplete="off">
                         <label class="profile-settings-first-name-label" for="profile-settings-first-name">First Name</label>
-                        <input type="text" name="profile-settings-first-name" class="profile-text-box profile-settings-first-name"><br>
+                        <input type="text" name="profile-settings-first-name" id="profile-settings-first-name" class="profile-text-box"><br>
     
                         <label class="profile-settings-first-name-label" style="padding-right: 22;" for="profile-settings-last-name">Last Name</label>
-                        <input type="text" name="profile-text-box profile-settings-last-name" class="profile-text-box profile-settings-last-name"><br>
+                        <input type="text" name="profile-text-box profile-settings-last-name" id="profile-settings-last-name" class="profile-text-box"><br>
 
                         <button type="submit" class="profile-settings-submit">Submit</button>
                     </form>
@@ -59,7 +59,7 @@
                 <hr style="clear: both; margin-top: 80px; height: 1px; background-color: grey; border:none;">
                 <div class="Account-settings">
                     <p class="profile-settings-title">Account Setting</p>
-                    <form>
+                    <form onsubmit="profileChangeEmail(event)" autocomplete="off">
                         <label class="profile-settings-first-name-label" for="profile-text-box">Email</label>
                         <input type="text" name="profile-text-box" class="profile-text-box profile-settings-email"><br>
 
@@ -69,7 +69,7 @@
                 <hr style="clear: both; margin-top: 80px; height: 2px; background-color: grey; border:none;">
                 <div class="Account-settings-reset-password">
                     <p class="profile-settings-title">Reset Password</p>
-                    <form>
+                    <form onsubmit="profileChangePwd(event)" autocomplete="off">
                         <label class="profile-settings-first-name-label" for="profile-text-box" style="padding-right: 95px;">New Password</label>
                         <input type="text" name="profile-text-box" class="profile-text-box profile-settings-reset-psw"><br>
 

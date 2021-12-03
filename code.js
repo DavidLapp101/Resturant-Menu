@@ -551,7 +551,57 @@ $(window).on('load', function() {
 //PROFILE JS
 //puts placeholders in user info tab
 $(window).on('load', function(){
-    $('.profile-settings-first-name').attr('placeholder', usersFirstName);
-    $('.profile-settings-last-name').attr('placeholder', usersLastName);
+    $('#profile-settings-first-name').attr('placeholder', usersFirstName);
+    $('#profile-settings-last-name').attr('placeholder', usersLastName);
     $('.profile-settings-email').attr('placeholder', usersEmail)
 })
+
+function profileChangeName(i){
+    alert('start')
+    let firstName=document.getElementById('profile-settings-first-name').value;
+    let lastName=document.getElementById('profile-settings-last-name').value;
+    console.log(firstName);
+    console.log(lastName);
+    alert('before for')
+    let fullArr = JSON.parse(localStorage.getItem('fullArr'));
+    let email;
+    let psw;
+    for(let f=0; f<=fullArr.length-1; f++){
+
+        if(fullArr[f].firstName==usersFirstName){
+            email=fullArr[f].email
+            psw=fullArr[f].psw
+            fullArr.splice(f,1)
+        }
+    }
+    let newData={firstName, lastName, email, psw};
+    console.log(newData)
+    fullArr.push(newData);
+    fullArr=JSON.stringify(fullArr);
+    localStorage.setItem('fullArr', fullArr)
+    alert('end')
+}
+
+
+// function forgetPwd(i){
+//     let email=document.getElementById('forget-pwd-email').value;
+//     let newPass=document.getElementById('forget-pwd').value;
+//     let fullArr = JSON.parse(localStorage.getItem('fullArr'));
+//     let firstName="1";
+//     let lastName="1";
+//     let psw=newPass
+//     for(let f=0; f<=fullArr.length-1; f++){
+//         console.log("Last Name: " + fullArr[f].firstName + ", Last Name: "+fullArr[f].lastName+", Email: "+fullArr[f].email+", Password: "+fullArr[f].psw)
+//         if(fullArr[f].email==email){
+//             firstName=fullArr[f].firstName;
+//             console.log(firstName)
+//             lastName=fullArr[f].lastName;
+//             console.log(lastName)
+//             fullArr.splice(f,1)
+//         }   
+//     } 
+//     let newData={firstName, lastName, email, psw};
+//     fullArr.push(newData)
+//     fullArr=JSON.stringify(fullArr);
+//     localStorage.setItem('fullArr', fullArr)
+// }
