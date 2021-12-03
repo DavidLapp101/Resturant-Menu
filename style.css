@@ -1120,12 +1120,11 @@ header ul li a:hover {
 
 .checkout-wrapper {
     display: flex;
-    min-height: 100vh;
 }
 
 .info-con {
     width: 40%;
-    min-height: 1120px;
+    max-height: 1000px;
     margin: 60px 0 40px 60px;
     border-radius: 15px;
     background-color: white;
@@ -1162,6 +1161,7 @@ header ul li a:hover {
 .lrg-txt-box {
     width: 93.5%;
     height: 30%;
+    max-height: 30%;
     padding-left: 5px;
     margin: 20px 0 0 20px;
     border: 1.5px solid grey;
@@ -1227,7 +1227,7 @@ header ul li a:hover {
     border: none;
     border-radius: 10px;
     cursor: pointer;
-    margin: 30px 0 0 20px;
+    margin: 30px 0 0 17.5px;
 }
 
 .cash-credit-btn:hover {
