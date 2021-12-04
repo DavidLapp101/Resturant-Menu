@@ -903,8 +903,9 @@ header ul li a:hover {
 
 .lrg-txt-box {
     width: 93.5%;
+    min-width: 93.5%;
     height: 240px;
-    max-height: 240px;
+    min-height: 240px;
     padding-left: 5px;
     margin: 20px 0 0 20px;
     border: 1.5px solid grey;
@@ -1065,6 +1066,16 @@ header ul li a:hover {
 .tip-con-bottom {
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
+}
+
+.del-fee p {
+    font-size: 1.8rem;
+    margin: 0 0 -10px 20px;
+}
+
+.del-fee h5 {
+    font-family: "Lato";
+    margin: 40px 0 0 20px;
 }
 
 /*///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
