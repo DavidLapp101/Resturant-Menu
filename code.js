@@ -55,7 +55,10 @@ $('.checkoutbtn').on('click', function() {
     if(($('#order-title-text').val() == '')
     ||($('#card-num').val() == '')
     ||($('#card-cvv').val() == '')
-    ||($('#user-address').val() == '')) {
+    ||($('#card-mm').val() == '')
+    ||($('#card-yy').val() == '')
+    ||($('#user-address').val() == '')
+    ||($('#user-zip').val() == '')) {
         alert('Please fill in all above!');
     }
     else {
@@ -77,7 +80,11 @@ $('.credit-btn').on('click', function() {
     $('.credit-info').append(`
     <input class="cc-txt-box" type="text" id="card-num" maxlength="16" placeholder="Card Number XXXX-XXXX-XXXX-XXXX">
                         
-    <input class="sml-txt-box" type="text" id="card-cvv" maxlength="3" placeholder="CVV"></input>`);
+    <input class="sml-txt-box" type="text" id="card-cvv" maxlength="3" placeholder="CVV"></input>
+    
+    <input class="mm-yy" type="text" id="card-mm" maxlength="2" placeholder="MM">
+
+    <input class="mm-yy" type="text" id="card-yy" maxlength="2" placeholder="YY">`);
     }
 });
 
@@ -104,7 +111,9 @@ $('.del-btn').on('click', function() {
     }
     else {
     $('.address-info').append(`
-    <input class="txt-box" type="text" id="user-address" placeholder="Address">`);
+    <input class="txt-box" type="text" id="user-address" placeholder="Address">
+    
+    <input class="zip-post" type="text" id="user-zip" maxlength="5" placeholder="Zip / Postal">`);
     }
 });
 
