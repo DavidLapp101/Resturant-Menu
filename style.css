@@ -857,13 +857,18 @@ header ul li a:hover {
 }
 
 .checkout-wrapper {
-    display: flex;
+    display: grid;
+    grid-template-columns: 45% 45%;
+    grid-template-rows: repeat(3 1fr);
+    grid-column-gap: 50px;
 }
 
 .info-con {
-    width: 40%;
+    width: 90%;
     height: auto;
-    margin: 60px 0 40px 60px;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    margin: 60px 0 0 60px;
     border-radius: 15px;
     background-color: white;
     box-shadow: 2px 2px 2px 3px rgba(194, 184, 184, .4);
@@ -1067,10 +1072,10 @@ header ul li a:hover {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
 .order-history {
-    display: column;
-    justify-content: left;
     min-height: 800px;
-    margin: 60px 0 40px 60px;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    margin: 60px 0 0 0;
 }
 
 .history-item-name {
@@ -1087,7 +1092,7 @@ header ul li a:hover {
 }
 
 .order-his-con {
-    width: 125%;
+    width: 108%;
     display: flex;
     justify-content: left;
     background-color: white;

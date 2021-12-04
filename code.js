@@ -93,17 +93,6 @@ $('.cash-btn').on('click', function() {
     $('.credit').children().remove();
 });
 
-//adds 5.00 tip
-$('.five').on('click', function() {
-    if($('.user-tip').children().length > 1) {
-        alert("You have already tipped");
-    }
-    else {
-    $('.user-tip').append(`
-    <span class="gift">$5.00</span><button class="remove-tip" onclick="removeTip(this)">Remove</button>`);
-    }
-});
-
 //allows you to put in your address for delivery
 $('.del-btn').on('click', function() {
     if($('.address-info').children().length > 0) {
