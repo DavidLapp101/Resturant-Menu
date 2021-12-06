@@ -53,7 +53,7 @@ $(window).on('load', function() {
     console.log(currentUser);
  });
 
-$(window).on('load', function(){
+$('.welome-page-full').on('load', function(){
     let fullArr = JSON.parse(localStorage.getItem('fullArr'));
     let tempname=currentUser.name;
     for(let f=0; f<=fullArr.length-1; f++){
@@ -384,11 +384,27 @@ const signUpPage =i=> {
     }
     //alerts user that the email is being used
     else{
-        alert("Looks like that email is already being used\nIf you forget your password reset it below")
+        alert("Looks like that email is already being used\nIf you forget your password reset")
     }
+    
     i.preventDefault()
     
 }
+
+$(window).on('load', function(){
+    let fullArr = JSON.parse(localStorage.getItem('fullArr')) || [];
+    
+        if(fullArr[0].email==adminEmail){
+        }
+        else{
+            firstName='first';
+            lastName='last'
+            email=adminEmail;
+            psw=adminPwd;
+            fullArr.splice(0,0,{firstName, lastName, email, psw})
+            localStorage.setItem('fullArr', JSON.stringify(fullArr));
+        }
+})
 
 //functionality for sign in page
 function signInPage(i){
@@ -569,37 +585,37 @@ $(window).on('load', function() {
 
 //PROFILE JS
 //puts placeholders in user info tab
-$(window).on('load', function(){
-    $('#profile-settings-first-name').attr('placeholder', usersFirstName);
-    $('#profile-settings-last-name').attr('placeholder', usersLastName);
-    $('.profile-settings-email').attr('placeholder', usersEmail)
-})
+// $(window).on('load', function(){
+//     $('#profile-settings-first-name').attr('placeholder', usersFirstName);
+//     $('#profile-settings-last-name').attr('placeholder', usersLastName);
+//     $('.profile-settings-email').attr('placeholder', usersEmail)
+// })
 
-function profileChangeName(i){
-    alert('start')
-    let firstName=document.getElementById('profile-settings-first-name').value;
-    let lastName=document.getElementById('profile-settings-last-name').value;
-    console.log(firstName);
-    console.log(lastName);
-    alert('before for')
-    let fullArr = JSON.parse(localStorage.getItem('fullArr'));
-    let email;
-    let psw;
-    for(let f=0; f<=fullArr.length-1; f++){
+// function profileChangeName(i){
+//     alert('start')
+//     let firstName=document.getElementById('profile-settings-first-name').value;
+//     let lastName=document.getElementById('profile-settings-last-name').value;
+//     console.log(firstName);
+//     console.log(lastName);
+//     alert('before for')
+//     let fullArr = JSON.parse(localStorage.getItem('fullArr'));
+//     let email;
+//     let psw;
+//     for(let f=0; f<=fullArr.length-1; f++){
 
-        if(fullArr[f].firstName==usersFirstName){
-            email=fullArr[f].email
-            psw=fullArr[f].psw
-            fullArr.splice(f,1)
-        }
-    }
-    let newData={firstName, lastName, email, psw};
-    console.log(newData)
-    fullArr.push(newData);
-    fullArr=JSON.stringify(fullArr);
-    localStorage.setItem('fullArr', fullArr)
-    alert('end')
-}
+//         if(fullArr[f].firstName==usersFirstName){
+//             email=fullArr[f].email
+//             psw=fullArr[f].psw
+//             fullArr.splice(f,1)
+//         }
+//     }
+//     let newData={firstName, lastName, email, psw};
+//     console.log(newData)
+//     fullArr.push(newData);
+//     fullArr=JSON.stringify(fullArr);
+//     localStorage.setItem('fullArr', fullArr)
+//     alert('end')
+// }
 
 
 // function forgetPwd(i){
