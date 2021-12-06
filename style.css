@@ -29,21 +29,21 @@
     bottom:0;
     width: 90%;
     height: 30px;
-    background-color: gainsboro;
+    background-color: maroon;
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
 }
 
 .menu {
-    background-color: gainsboro;
-    border-left: solid lightskyblue 15px;
+    background-color: maroon;
+    border-left: solid black 15px;
 }
 
 .menu-tab {
     position: sticky;
     top: 63;
     display: flex;
-    background-color: gainsboro;
+    background-color: maroon;
     width: 85%;
     margin: 0 auto;
     padding: 10px 0;
@@ -115,7 +115,7 @@
 
 
 .checkout-items {
-    background-color: white;
+    background-color: gainsboro;
     width: 350px;
     padding-top: 40px;
     overflow-y: auto;
@@ -226,7 +226,7 @@
 }
 
 .saved-orders-body {
-    background-color: gainsboro; 
+    background-color: maroon; 
     font-family: 'Montserrat', sans-serif;
 }
 

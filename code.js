@@ -612,10 +612,6 @@ $(window).on('load', function() {
     }
  });
 
-//  $(window).on('load', function() { 
-//     
-//  });
-
 //PROFILE JS
 //puts placeholders in user info tab
 $(window).on('load', function(){
