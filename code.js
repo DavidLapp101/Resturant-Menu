@@ -50,6 +50,7 @@ $(window).on('load', function() {
 
     managerMenu = localStorage.getItem('vggd%^DI*65');
     deletedItems = localStorage.getItem('noi()*%8537f7');
+    console.log(currentUser);
  });
 
 $(window).on('load', function(){
@@ -484,7 +485,14 @@ $(window).on('load', function() {
             $('.order-name-container').append(`<p>${currentUser.pastOrders[i].orderTitle}</p>`);
         }
     }
-    else if(($('.menu-body').length > 0 || $('.previous-holder').length > 0) && currentUser.checkoutOrder != undefined) {
+
+    if($('.menu-body').length > 0) {
+        if(managerMenu != undefined && managerMenu != '') {
+            $('.menu-items').empty().html(managerMenu);
+        }
+    }
+    
+    if(($('.menu-body').length > 0 || $('.previous-holder').length > 0) && currentUser.checkoutOrder != undefined) {
         for(i = 0; i < currentUser.checkoutOrder.name.length; i++) {
             $('.checkout-items').append(`
             <div class="checkout-item" id="${currentUser.checkoutOrder.name[i].replace(/\s+/g, '')}">
@@ -508,10 +516,6 @@ $(window).on('load', function() {
             </div>`);
 
             calculatePrice();
-
-            if(managerMenu != undefined && managerMenu != '') {
-                $('.menu-items').empty().html(managerMenu);
-            }
         }
     }
     else if($('.checkout-wrapper').length > 0) {
