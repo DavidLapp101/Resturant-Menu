@@ -1,6 +1,13 @@
 var currentUser;
 var currentEmail;
-var emailHolder = '2tgewg3g3%&^j$';
+var managerMenu;
+var deletedItems;
+var adminEmail='admin@goobereats.com';
+var adminPwd='admin1';
+var usersEmail;
+var usersFirstName;
+var usersLastName;
+var usersPassword;
 
 class Customer {
     constructor(name, lastName) {
@@ -27,15 +34,41 @@ class Order {
 }
 
 $(window).on('unload', function() {
-    localStorage.setItem(emailHolder, currentEmail);
+    if($('.manager-page').length > 0) {
+        localStorage.setItem('vggd%^DI*65', $('.menu-items').html());
+        localStorage.setItem('noi()*%8537f7', $('.checkout-items').html());
+    }
+    saveOrder();
+
+    localStorage.setItem('2tgewg3g3%&^j$', currentEmail);
     localStorage.setItem(currentEmail, JSON.stringify(currentUser));
 });
 
 $(window).on('load', function() { 
-    let email = localStorage.getItem(emailHolder);
-    currentUser = JSON.parse(localStorage.getItem(email));
+    currentEmail = localStorage.getItem('2tgewg3g3%&^j$');
+    currentUser = JSON.parse(localStorage.getItem(currentEmail));
+
+    managerMenu = localStorage.getItem('vggd%^DI*65');
+    deletedItems = localStorage.getItem('noi()*%8537f7');
     console.log(currentUser);
  });
+
+$('.welome-page-full').on('load', function(){
+    let fullArr = JSON.parse(localStorage.getItem('fullArr'));
+    let tempname=currentUser.name;
+    for(let f=0; f<=fullArr.length-1; f++){
+        if(fullArr[f].firstName==tempname){
+            usersEmail=fullArr[f].email;
+            usersFirstName=fullArr[f].firstName;
+            usersLastName=fullArr[f].lastName;
+            usersPassword=fullArr[f].psw
+        }
+    }
+     $('.profile-users-name').html(`${usersFirstName} ${usersLastName}`);
+     $('.profile-users-username').html(`${usersEmail}`);
+     $('.profile-users-email').html(`${usersEmail}`);
+     $('.profile-users-password').html(`${usersPassword}`);
+});
 
  /*///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////    NAV BAR JS    /////////////////////////////////////////////////////////////////////////////////////////
@@ -167,6 +200,7 @@ function removeTip(element) {
 //allows you to remove items from the cheack out cart
 function removeCheckout(element) {
     $(element).parent().parent().remove();
+    calculateCheckoutPrice();
 }
 
 /*///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -174,13 +208,23 @@ function removeCheckout(element) {
 *////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Makes it so that menu items grow a bit on hover
-$(".menu-item").on({
-    mouseenter: function () {
+$(document).on('mouseenter', '.menu-item', function() {
+    if($('.manager-page').length > 0) {
+        $(this).children('img').css({'width': '400px', 'height': '300px', 'transition': '0.5s'});
+        $(this).children('p').css({'color': 'red', 'transition': '0.5s'}).html(`${$(this).children('p').html()} - Remove?`);
+    }
+    else {
         $(this).children('img').css({'width': '400px', 'height': '300px', 'transition': '0.5s'});
         $(this).children('p').css({'color': 'blue', 'transition': '0.5s'});
-    },
-    
-    mouseleave: function () {
+    }
+});
+
+$(document).on('mouseleave', '.menu-item', function() {
+    if($('.manager-page').length > 0) {
+        $(this).children('img').css({'width': '350px', 'height': '250px'});
+        $(this).children('p').css({'color': 'lightskyblue', 'transition': '0.5s'}).html(`${$(this).children('p').html().replace('- Remove?', '')}`);
+    }
+    else {
         $(this).children('img').css({'width': '350px', 'height': '250px'});
         $(this).children('p').css({'color': 'lightskyblue', 'transition': '0.5s'});
     }
@@ -208,7 +252,7 @@ $(document).on('mouseenter', '.order-name-container p', function() {
                 <h2>X <span class="quantity">${pastOrder.quantity[i]}</span><br><span class="name">${pastOrder.name[i]}</span></h2>
                 <div>
                     <p>$${Math.round((pastOrder.quantity[i] * pastOrder.price[i] + Number.EPSILON) * 100) / 100}</p>
-                    <button onclick="addToCart('${pastOrder.name[i]}', ${pastOrder.price[i]}, ${pastOrder.quantity[i]})">Add To Checkout</button>
+                    <button onclick="addToCart('${pastOrder.name[i]}', ${pastOrder.price[i]}, this, ${pastOrder.quantity[i]})">Add To Checkout</button>
                 </div>
             </div>
         `);
@@ -217,8 +261,23 @@ $(document).on('mouseenter', '.order-name-container p', function() {
 
 // When menu item is clicked, this function will append it to the cart and turn the reveal bar blue
 // to notify that item has been added. Any particular item cannot be added more than once
-function addToCart(name, price, quantity = 1) {
-    if($(`#${name.replace(/\s+/g, '').replace('&', '\\&')}`).length == 0) {
+function addToCart(name, price, element, quantity = 1) {
+    if($('.manager-page').length > 0) {
+        $('.reveal-checkout').css({'background-color': 'red', 'transition': '0.5s'});
+
+        $('.checkout-items').append(`
+        <div class="deleted-items">
+            <div>
+                <img src="images/${name}.jpg" alt="">
+                <p>${name}</p>
+            </div>
+            <button onclick="addToMenu('${name}', ${price}, '${$(element).attr('id')}', this)">Add To Menu</button>
+        </div>
+        `);
+
+        element.remove(); 
+    }
+    else if($(`#${name.replace(/\s+/g, '').replace('&', '\\&')}`).length == 0) {
         $('.reveal-checkout').css({'background-color': 'blue', 'transition': '0.5s'});
 
         $('.checkout-items').append(`
@@ -246,6 +305,14 @@ function addToCart(name, price, quantity = 1) {
     }
 }
 
+function addToMenu(name, price, menuSlot, removed) {
+    $(`#${menuSlot}-items`).next().append(`
+        <div class="menu-item" id="${menuSlot}" onclick="addToCart('${name}', ${price}, this)"><img src="images/${name}.jpg" alt=""><p>${name} - $${price}</p></div>
+    `);
+
+    $(removed).parent().remove();
+}
+
 // Changes the quantity value and item price of specific item
 function quantityChange(element, operation, price) {   
     let quantity = Number($(element).siblings('.quantity').html());
@@ -267,6 +334,26 @@ function quantityChange(element, operation, price) {
     calculatePrice();
 }
 
+function checkoutQuantityChange(element, operation, price) {
+    let quantity = Number($(element).siblings('.quantity').html());
+
+    if(operation) {
+        quantity++;
+    }
+    else {
+        quantity--;
+    }
+
+    if(quantity < 1) {
+        quantity = 1;
+    }
+
+    $(element).siblings('.quantity').html(`${quantity}`);
+    $(element).parent().siblings('.item-price').children().html(`$${Math.round((quantity * price + Number.EPSILON) * 100) / 100}`);
+
+    calculateCheckoutPrice();
+}
+
 // Removes the menu item from the cart
 function removeCart(element) {
     $(element).parent().parent().remove();
@@ -284,6 +371,16 @@ function calculatePrice() {
     });
 
     $('.checkout-final-price').html(`$${Math.round((finalPrice + Number.EPSILON) * 100) / 100}`);
+}
+
+function calculateCheckoutPrice() {
+    let finalPrice = 0;
+
+    $('.item-price').children().each(function() {
+        finalPrice += Number($(this).html().replace('$', '')); 
+    });
+
+    $('.check-total').children().html(`$${Math.round((finalPrice + Number.EPSILON) * 100) / 100}`);
 }
 
 //Sign up page so that users can create new account
@@ -318,25 +415,49 @@ const signUpPage =i=> {
     }
     //alerts user that the email is being used
     else{
-        alert("Looks like that email is already being used\nIf you forget your password reset it below")
+        alert("Looks like that email is already being used\nIf you forget your password reset")
     }
+    
     i.preventDefault()
     
 }
 
+$(window).on('load', function(){
+    let fullArr = JSON.parse(localStorage.getItem('fullArr')) || [];
+    
+        if(fullArr[0].email==adminEmail){
+        }
+        else{
+            firstName='first';
+            lastName='last'
+            email=adminEmail;
+            psw=adminPwd;
+            fullArr.splice(0,0,{firstName, lastName, email, psw})
+            localStorage.setItem('fullArr', JSON.stringify(fullArr));
+        }
+})
+
 //functionality for sign in page
 function signInPage(i){
-    let email = document.getElementById('email').value, psw = document.getElementById('pwd').value;
-    let fullArr = JSON.parse(localStorage.getItem('fullArr')) || [];
-    if(JSON.parse(localStorage.getItem('fullArr')).some(data => data.email.toLowerCase()== email && data.psw == psw)
-    &&fullArr.length){
-        currentUser = JSON.parse(localStorage.getItem(email));
-        currentEmail = email;
+    if(document.getElementById('email').value==adminEmail && document.getElementById('pwd').value==adminPwd){
+        currentUser = JSON.parse(localStorage.getItem(adminEmail));
+        currentEmail = adminEmail;
 
-        location.href="welome-page.html";
+        location.href="manager-page.html";
     }
-    else{
-        alert('Incorrect login credentials')
+        else{
+        let email = document.getElementById('email').value, psw = document.getElementById('pwd').value;
+        let fullArr = JSON.parse(localStorage.getItem('fullArr')) || [];
+        if(JSON.parse(localStorage.getItem('fullArr')).some(data => data.email.toLowerCase()== email && data.psw == psw)
+        &&fullArr.length){
+            currentUser = JSON.parse(localStorage.getItem(email));
+            currentEmail = email;
+            
+            location.href="welome-page.html";
+        }
+        else{
+            alert('Incorrect login credentials')
+        }
     }
     i.preventDefault();
 }
@@ -367,6 +488,15 @@ function forgetPwd(i){
 
 $('.final-checkout').on('click', function() {
     if($('.final-checkout').siblings().length > 0) {
+        location.href="checkout.html";
+    }
+    else {
+        alert('Add items to your cart!');
+    }
+});
+
+function saveOrder() {
+    if($('.checkout-items').length > 0) {
         let order = new Order();
 
         $('.checkout-item').each(function() {
@@ -378,19 +508,32 @@ $('.final-checkout').on('click', function() {
         });
 
         currentUser.checkoutOrder = order;
-
-        location.href="checkout.html";
     }
-    else {
-        alert('Add items to your cart!');
-    }
+    else if($('.checkout-wrapper').length > 0) {
+        let order = new Order();
 
-    console.log(currentUser.checkoutOrder);
-});
+        $('.customer-order-item').each(function() {
+            let name = $(this).children('.history-item-name').html();
+            let quantity = Number($(this).find('.quantity').html());
+            let price = Number($(this).find('.final-item-price').html());
+            
+            order.pushOrder(name, quantity, price);  
+        });
+
+        currentUser.checkoutOrder = order;
+    }
+}
 
 $(window).on('load', function() { 
     if($('.first-last-name').length > 0) {
         $('.first-last-name').html(`${currentUser.name} ${currentUser.lastName}`);
+
+    }
+
+    if(currentEmail == adminEmail && $('.first-last-name').length > 0) {
+        $('.first-last-name').after(`
+            <a href="manager-page.html">Edit Menu</a>
+        `).remove();
     }
 
     if($('.previous-holder').length > 0) {
@@ -401,6 +544,12 @@ $(window).on('load', function() {
         }
     }
 
+    if($('.menu-body').length > 0) {
+        if(managerMenu != undefined && managerMenu != '') {
+            $('.menu-items').empty().html(managerMenu);
+        }
+    }
+    
     if(($('.menu-body').length > 0 || $('.previous-holder').length > 0) && currentUser.checkoutOrder != undefined) {
         for(i = 0; i < currentUser.checkoutOrder.name.length; i++) {
             $('.checkout-items').append(`
@@ -439,10 +588,39 @@ $(window).on('load', function() {
                     <div class="item-price">
                         <p>$${Math.round((currentUser.checkoutOrder.price[i] * currentUser.checkoutOrder.quantity[i] + Number.EPSILON) * 100) / 100}</p>
                     </div>
-                    <form>
-                        <input  class="num-inc" type="number" id="quantity" name="quantity" min="1" max="999">
-                    </form>
+                    <div class="quantity-change">
+                        <ion-icon name="caret-down-circle" class="quantity-button" onclick="checkoutQuantityChange(this, false, ${currentUser.checkoutOrder.price[i]})"></ion-icon>
+                        <p class="quantity">${currentUser.checkoutOrder.quantity[i]}</p>
+                        <ion-icon name="caret-up-circle" class="quantity-button" onclick="checkoutQuantityChange(this, true, ${currentUser.checkoutOrder.price[i]})"></ion-icon>
+                    </div>
                     <button class="rem-btn" onclick="removeCheckout(this)">Remove</button>
+                </div>
+                <p style="display: none;" class="final-item-price">${currentUser.checkoutOrder.price[i]}</p>
+            </div>
+            `);
+        }
+
+        calculateCheckoutPrice();
+    }
+    else if($('.manager-page').length > 0) {
+        if(managerMenu != undefined && managerMenu != '') {
+            $('.menu-items').empty().html(managerMenu);
+
+            if(deletedItems != undefined && deletedItems != '') {
+                $('.checkout-items').html(deletedItems);
+            }
+        }
+    }
+    else if($('.rec-page').length > 0) {
+        for(i = 0; i < currentUser.checkoutOrder.name.length; i++) {
+            $('.order-history').append(`
+            <div class="rec-item-name">${currentUser.checkoutOrder.name[i]}</div>
+                <div class="rec-con">
+                <div class="item-pic-rec">
+                    <img src="images/${currentUser.checkoutOrder.name[i]}.jpg">
+                </div>
+                <div class="item-price">
+                    <p>$${Math.round((currentUser.checkoutOrder.price[i] * currentUser.checkoutOrder.quantity[i] + Number.EPSILON) * 100) / 100}</p>
                 </div>
             </div>
             `);
@@ -450,21 +628,60 @@ $(window).on('load', function() {
     }
  });
 
-//  $(window).on('load', function() { 
-//     if($('.rec-page').length > 0) {
-//         for(i = 0; i < currentUser.checkoutOrder.name.length; i++) {
-//             console.log('loaded');
-//             $('.order-history').append(`
-//             <div class="rec-item-name">${currentUser.checkoutOrder.name[i]}</div>
-//                 <div class="rec-con">
-//                 <div class="item-pic-rec">
-//                     <img src="images/${currentUser.checkoutOrder.name[i]}.jpg">
-//                 </div>
-//                 <div class="item-price">
-//                     <p>$${Math.round((currentUser.checkoutOrder.price[i] * currentUser.checkoutOrder.quantity[i] + Number.EPSILON) * 100) / 100}</p>
-//                 </div>
-//             </div>
-//             `);
+//PROFILE JS
+//puts placeholders in user info tab
+// $(window).on('load', function(){
+//     $('#profile-settings-first-name').attr('placeholder', usersFirstName);
+//     $('#profile-settings-last-name').attr('placeholder', usersLastName);
+//     $('.profile-settings-email').attr('placeholder', usersEmail)
+// })
+
+// function profileChangeName(i){
+//     alert('start')
+//     let firstName=document.getElementById('profile-settings-first-name').value;
+//     let lastName=document.getElementById('profile-settings-last-name').value;
+//     console.log(firstName);
+//     console.log(lastName);
+//     alert('before for')
+//     let fullArr = JSON.parse(localStorage.getItem('fullArr'));
+//     let email;
+//     let psw;
+//     for(let f=0; f<=fullArr.length-1; f++){
+
+//         if(fullArr[f].firstName==usersFirstName){
+//             email=fullArr[f].email
+//             psw=fullArr[f].psw
+//             fullArr.splice(f,1)
 //         }
 //     }
-//  });
+//     let newData={firstName, lastName, email, psw};
+//     console.log(newData)
+//     fullArr.push(newData);
+//     fullArr=JSON.stringify(fullArr);
+//     localStorage.setItem('fullArr', fullArr)
+//     alert('end')
+// }
+
+
+// function forgetPwd(i){
+//     let email=document.getElementById('forget-pwd-email').value;
+//     let newPass=document.getElementById('forget-pwd').value;
+//     let fullArr = JSON.parse(localStorage.getItem('fullArr'));
+//     let firstName="1";
+//     let lastName="1";
+//     let psw=newPass
+//     for(let f=0; f<=fullArr.length-1; f++){
+//         console.log("Last Name: " + fullArr[f].firstName + ", Last Name: "+fullArr[f].lastName+", Email: "+fullArr[f].email+", Password: "+fullArr[f].psw)
+//         if(fullArr[f].email==email){
+//             firstName=fullArr[f].firstName;
+//             console.log(firstName)
+//             lastName=fullArr[f].lastName;
+//             console.log(lastName)
+//             fullArr.splice(f,1)
+//         }   
+//     } 
+//     let newData={firstName, lastName, email, psw};
+//     fullArr.push(newData)
+//     fullArr=JSON.stringify(fullArr);
+//     localStorage.setItem('fullArr', fullArr)
+// }

@@ -21,6 +21,7 @@
                 <p class="first-last-name">Joe Mama</p>
                 <a href="welome-page.html">Home</a>
                 <a href="#">Profile</a>
+                <a href="saved-orders.html">View Previous Orders</a>
                 <a href="index.html">Sign Out</a>
                 </div>
             </span></div></li>
@@ -105,14 +106,16 @@
                             <div class="item-price">
                                 <p>$12.42</p>
                             </div>
-                            <form>
-                                <input  class="num-inc" type="number" id="quantity" name="quantity" min="1" max="999">
-                            </form>
+                            <div class="quantity-change">
+                                <ion-icon name="caret-down-circle" class="quantity-button"></ion-icon>
+                                <p class="quantity">quantity</p>
+                                <ion-icon name="caret-up-circle" class="quantity-button"></ion-icon>
+                            </div>
                             <button class="rem-btn" onclick="removeCheckout(this)">Remove</button>
                         </div>
                     </div>
 
-                    <div class="customer-order-item">
+                     <div class="customer-order-item">
                         <div class="history-item-name">Random food</div>
                         <div class="order-his-con">
                             <div class="item-pic">

@@ -29,21 +29,21 @@
     bottom:0;
     width: 90%;
     height: 30px;
-    background-color: gainsboro;
+    background-color: maroon;
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
 }
 
 .menu {
-    background-color: gainsboro;
-    border-left: solid lightskyblue 15px;
+    background-color: maroon;
+    border-left: solid black 15px;
 }
 
 .menu-tab {
     position: sticky;
     top: 63;
     display: flex;
-    background-color: gainsboro;
+    background-color: maroon;
     width: 85%;
     margin: 0 auto;
     padding: 10px 0;
@@ -115,7 +115,7 @@
 
 
 .checkout-items {
-    background-color: white;
+    background-color: gainsboro;
     width: 350px;
     padding-top: 40px;
     overflow-y: auto;
@@ -128,7 +128,7 @@
 
 .grid-menu {
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: 33% 33% 33%;
 }
 
 .menu-title {
@@ -204,6 +204,7 @@
 .quantity-change ion-icon {
     font-size: 25px;
     transition: 0.2s;
+    padding: 0 5px;
 }
 
 .quantity-change ion-icon:hover {
@@ -225,7 +226,7 @@
 }
 
 .saved-orders-body {
-    background-color: gainsboro; 
+    background-color: maroon; 
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -354,6 +355,51 @@
 
 .previous-order button:hover {
     background-color: rgb(137, 137, 255);
+}
+
+.manager-page {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.deleted-items {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: solid 3px black;
+    margin-bottom: 25px;
+}
+
+.deleted-items img {
+    width: 100px;
+    height: 75px;
+    border-radius: 20px;
+    margin-bottom: 15px;
+}
+
+.deleted-items p {
+    font-size: 24px;
+    text-align: center;
+    color: lightskyblue;
+    font-style: italic;
+    font-weight: 600;
+}
+
+.deleted-items button {
+    box-sizing: content-box;
+    font-size: 22px;
+    font-weight: 600;
+    padding: 10px 15px;
+    color: white;
+    height: 75px;
+    background-color: green;
+    border: solid 3px black;
+    border-radius: 15px;
+    transition: 0.4s;
+}
+
+.deleted-items button:hover {
+    box-sizing: content-box;
+    background-color: lightgreen;
 }
 
 /* font-family: 'Lato', sans-serif;
@@ -580,14 +626,14 @@ header{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 40px 100px;
+    padding: 40px 140px;
     background-color: lightskyblue;
     transition: 0.6s;
     z-index: 1;
 }
 
 .sticky {
-    padding: 10px 100px;
+    padding: 10px 140px;
     background-color: lightskyblue;
 }
 
@@ -663,13 +709,231 @@ header ul li a:hover {
     padding: 13px 40px;
     position: absolute;
     z-index: 1;
-    margin: 35px -78px;
+    margin: 35px -120px;
 }
 
 .prof:hover .signout {
     visibility: visible;
 }
 
+/*///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////    Profile    /////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+.sidebar{
+    width: 250px;
+    height: 100vh;
+    min-height: 750px;
+    background-color: gainsboro;
+    padding: 160 0 0 10;
+    position: fixed;
+}
+.profile-icon-container{
+    height: 250px;
+    text-align: center;
+    padding-right: 10px;
+}
+.profile-icon{
+    font-size: 11rem;
+    margin: auto;
+    color: lightskyblue;
+}
+.profile-button{
+    border: 2px solid transparent;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    height: 100px;
+    font-size: 3rem;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    background-color: whitesmoke;
+    color: rgb(78, 78, 78);
+}
+.profile-button-1{
+    border: 2px solid transparent;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    height: 100px;
+    font-size: 3rem;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    transition: 0.5s;
+    color: grey
+}
+.profile-button-1:hover{
+    background-color: rgba(135, 206, 250, 0.782);
+    color: white;
+}
+.profile-options-container{
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.profile-name{
+    color: grey;
+    text-align: center;
+    padding-right: 10px;
+    font-size: 2rem;
+}
+.profile-body{
+    background-color: whitesmoke;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* OVERVIEW */
+.overview-content-container{
+    height: 400px;
+    min-width: 1000px;
+    margin: 240px 0px 10px 350px;
+    display: flex;
+    justify-content: space-between;
+}
+.profile-flex{
+    display: flex;
+}
+.left-box-overview{
+    border: 1px solid grey;
+    border-radius: 15px;
+    height: 100%;
+    width: 45%;
+    padding: 20px;
+}
+.right-box-overview{
+    border: 1px solid grey;
+    border-radius: 25px;
+    height: 100%;
+    width: 45%;
+    padding: 20px;
+}
+.profile-user-settings-title{
+    color: grey;
+    font-size: 1rem;
+    padding-bottom: 10px;
+}
+.profile-user-info-title{
+    color: rgb(78, 78, 78);
+    font-size: 2rem;
+    padding-bottom: 10px;
+}
+.profile-info{
+    color: grey;
+    font-size: 1rem;
+    padding-bottom: 5px;
+}
+.profile-user-info{
+    color: grey;
+    border-top: 2px solid grey;
+    padding: 0 20px 0 30px;
+}
+.profile-line{
+    border-top: 2px solid grey;
+    border-bottom: 2px solid grey;
+}
+.profile-table{
+    border-spacing: 0px;
+}
+.profile-table-td{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 1.5rem;
+    border-top: 2px solid grey;
+    color: grey;
+}
+.password-profile{
+    border-bottom: 2px solid grey;
+}
+.profile-order-history-title{
+    color: grey;
+    border-bottom: 2px solid grey;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 100px;
+}
+.profile-order-history-text{
+    font-size: 1.5rem;
+    text-align: center;
+    color: grey;
+}
+.profile-saved-order-link{
+    text-decoration: underline;
+    color: grey;
+    transition: 0.5s;
+}
+.profile-saved-order-link:hover{
+    color: lightgrey;
+}
+
+/* USER SETTINGS */
+.User-settings-overview{
+    padding: 175px 0 0 300;
+}
+.user-info-flex{
+    display: flex;
+}
+.user-settings-title{
+    font-size: 2rem;
+    font-weight: 600;
+    padding-bottom: 20px;
+}
+.user-settings-title-text{
+    border-bottom: 2px solid grey;
+    width: 1150px;
+    padding-bottom: 20px;
+}
+.profile-settings-title{
+    font-size: 1.5rem;
+    font-weight: 500;
+    padding: 20px 0 10px 0;
+}
+.profile-settings-first-name-label{
+    padding: 0 20px 10px 0;
+}
+.profile-text-box{
+    margin: 0 35px 15px 0;
+    background-color: transparent;
+    width: 300px;
+    height: 40px;
+    border: 2px solid grey;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    padding: 0 0 0 10px;
+}
+.profile-settings-submit{
+    float: right;
+    height: 50px;
+    width: 150px;
+    border-radius: 10px;
+    border: lightskyblue;
+    background-color: lightskyblue;
+    font-size: 1.5rem;
+    transition: 0.5s;
+}
+.profile-settings-submit:hover{
+    background-color: grey;
+    color: lightskyblue;
+}
+.delete-account-title{
+    font-size: 1.5rem;
+    font-weight: 500;
+    padding: 20px 0 10px 0;
+}
+.delete-account-submit{
+    float: right;
+    height: 50px;
+    width: 300px;
+    border-radius: 10px;
+    border: lightskyblue;
+    background-color: lightskyblue;
+    font-size: 1.5rem;
+    transition: 0.5s;
+    margin-bottom: 20px;
+}
+.delete-account-submit:hover{
+    background-color: grey;
+    color: lightskyblue;
+}
 /*///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////    FOOTER CSS    /////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
@@ -1106,6 +1370,7 @@ header ul li a:hover {
     width: 108%;
     display: flex;
     justify-content: left;
+    align-items: center;
     background-color: white;
     border-radius: 10px;
     padding: 10px;
@@ -1126,7 +1391,7 @@ header ul li a:hover {
     min-width: 50px;
     height: 50px;
     text-align: center;
-    margin: 100px 0 0 30px;
+    margin: 0 15px;
 }
 
 .item-price p {
