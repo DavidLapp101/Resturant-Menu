@@ -202,6 +202,7 @@ function removeTip(element) {
 //allows you to remove items from the cheack out cart
 function removeCheckout(element) {
     $(element).parent().parent().remove();
+    calculateCheckoutPrice();
 }
 
 /*///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -335,6 +336,26 @@ function quantityChange(element, operation, price) {
     calculatePrice();
 }
 
+function checkoutQuantityChange(element, operation, price) {
+    let quantity = Number($(element).siblings('.quantity').html());
+
+    if(operation) {
+        quantity++;
+    }
+    else {
+        quantity--;
+    }
+
+    if(quantity < 1) {
+        quantity = 1;
+    }
+
+    $(element).siblings('.quantity').html(`${quantity}`);
+    $(element).parent().siblings('.item-price').children().html(`$${Math.round((quantity * price + Number.EPSILON) * 100) / 100}`);
+
+    calculateCheckoutPrice();
+}
+
 // Removes the menu item from the cart
 function removeCart(element) {
     $(element).parent().parent().remove();
@@ -352,6 +373,16 @@ function calculatePrice() {
     });
 
     $('.checkout-final-price').html(`$${Math.round((finalPrice + Number.EPSILON) * 100) / 100}`);
+}
+
+function calculateCheckoutPrice() {
+    let finalPrice = 0;
+
+    $('.item-price').children().each(function() {
+        finalPrice += Number($(this).html().replace('$', '')); 
+    });
+
+    $('.check-total').children().html(`$${Math.round((finalPrice + Number.EPSILON) * 100) / 100}`);
 }
 
 //Sign up page so that users can create new account
@@ -451,13 +482,26 @@ $('.final-checkout').on('click', function() {
 });
 
 function saveOrder() {
-    if($('.checkout-item').length > 0) {
+    if($('.checkout-items').length > 0) {
         let order = new Order();
 
         $('.checkout-item').each(function() {
             let name = $(this).children('.item-name').html();
             let quantity = Number($(this).find('.quantity').html());
             let price = Number($(this).children('.item-price').html());
+            
+            order.pushOrder(name, quantity, price);  
+        });
+
+        currentUser.checkoutOrder = order;
+    }
+    else if($('.checkout-wrapper').length > 0) {
+        let order = new Order();
+
+        $('.customer-order-item').each(function() {
+            let name = $(this).children('.history-item-name').html();
+            let quantity = Number($(this).find('.quantity').html());
+            let price = Number($(this).find('.final-item-price').html());
             
             order.pushOrder(name, quantity, price);  
         });
@@ -530,14 +574,19 @@ $(window).on('load', function() {
                     <div class="item-price">
                         <p>$${Math.round((currentUser.checkoutOrder.price[i] * currentUser.checkoutOrder.quantity[i] + Number.EPSILON) * 100) / 100}</p>
                     </div>
-                    <form>
-                        <input  class="num-inc" type="number" id="quantity" name="quantity" min="1" max="999">
-                    </form>
+                    <div class="quantity-change">
+                        <ion-icon name="caret-down-circle" class="quantity-button" onclick="checkoutQuantityChange(this, false, ${currentUser.checkoutOrder.price[i]})"></ion-icon>
+                        <p class="quantity">${currentUser.checkoutOrder.quantity[i]}</p>
+                        <ion-icon name="caret-up-circle" class="quantity-button" onclick="checkoutQuantityChange(this, true, ${currentUser.checkoutOrder.price[i]})"></ion-icon>
+                    </div>
                     <button class="rem-btn" onclick="removeCheckout(this)">Remove</button>
                 </div>
+                <p style="display: none;" class="final-item-price">${currentUser.checkoutOrder.price[i]}</p>
             </div>
             `);
         }
+
+        calculateCheckoutPrice();
     }
     else if($('.manager-page').length > 0) {
         if(managerMenu != undefined && managerMenu != '') {
@@ -548,25 +597,25 @@ $(window).on('load', function() {
             }
         }
     }
+    else if($('.rec-page').length > 0) {
+        for(i = 0; i < currentUser.checkoutOrder.name.length; i++) {
+            $('.order-history').append(`
+            <div class="rec-item-name">${currentUser.checkoutOrder.name[i]}</div>
+                <div class="rec-con">
+                <div class="item-pic-rec">
+                    <img src="images/${currentUser.checkoutOrder.name[i]}.jpg">
+                </div>
+                <div class="item-price">
+                    <p>$${Math.round((currentUser.checkoutOrder.price[i] * currentUser.checkoutOrder.quantity[i] + Number.EPSILON) * 100) / 100}</p>
+                </div>
+            </div>
+            `);
+        }
+    }
  });
 
 //  $(window).on('load', function() { 
-//     if($('.rec-page').length > 0) {
-//         for(i = 0; i < currentUser.checkoutOrder.name.length; i++) {
-//             console.log('loaded');
-//             $('.order-history').append(`
-//             <div class="rec-item-name">${currentUser.checkoutOrder.name[i]}</div>
-//                 <div class="rec-con">
-//                 <div class="item-pic-rec">
-//                     <img src="images/${currentUser.checkoutOrder.name[i]}.jpg">
-//                 </div>
-//                 <div class="item-price">
-//                     <p>$${Math.round((currentUser.checkoutOrder.price[i] * currentUser.checkoutOrder.quantity[i] + Number.EPSILON) * 100) / 100}</p>
-//                 </div>
-//             </div>
-//             `);
-//         }
-//     }
+//     
 //  });
 
 //PROFILE JS

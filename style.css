@@ -204,6 +204,7 @@
 .quantity-change ion-icon {
     font-size: 25px;
     transition: 0.2s;
+    padding: 0 5px;
 }
 
 .quantity-change ion-icon:hover {
@@ -1345,6 +1346,7 @@ header ul li a:hover {
     width: 125%;
     display: flex;
     justify-content: left;
+    align-items: center;
     background-color: white;
     border-radius: 10px;
     padding: 10px;
@@ -1365,7 +1367,7 @@ header ul li a:hover {
     min-width: 50px;
     height: 50px;
     text-align: center;
-    margin: 100px 0 0 30px;
+    margin: 0 15px;
 }
 
 .item-price p {
