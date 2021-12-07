@@ -450,6 +450,7 @@ $(window).on('load', function(){
             psw=adminPwd;
             fullArr.splice(0,0,{firstName, lastName, email, psw})
             localStorage.setItem('fullArr', JSON.stringify(fullArr));
+            localStorage.setItem(email, JSON.stringify(new Customer(firstName, lastName)));
         }
 })
 
