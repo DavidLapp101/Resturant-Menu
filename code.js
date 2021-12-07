@@ -2,6 +2,7 @@ var currentUser;
 var currentEmail;
 var managerMenu;
 var deletedItems;
+var priceTotal = 0;
 var adminEmail='admin@goobereats.com';
 var adminPwd='admin1';
 var usersEmail;
@@ -40,6 +41,18 @@ $(window).on('unload', function() {
     }
     saveOrder();
 
+    if($('.checkout-wrapper').length > 0) {
+        if($('.gift').length > 0) {
+            priceTotal = Math.round(((Number($('.del-fee p').html().replace('$', '')) + Number($('.check-total').
+            children().html().replace('$', '')) + Number($('.gift').html().replace('$', ''))) + Number.EPSILON) * 100) / 100;
+        }
+        else {
+            priceTotal = Math.round(((Number($('.del-fee p').html().replace('$', '')) + Number($('.check-total').
+            children().html().replace('$', ''))) + Number.EPSILON) * 100) / 100;
+        }
+    }
+
+    localStorage.setItem('b3hkbr1%*(Gj', priceTotal);
     localStorage.setItem('2tgewg3g3%&^j$', currentEmail);
     localStorage.setItem(currentEmail, JSON.stringify(currentUser));
 });
@@ -47,6 +60,7 @@ $(window).on('unload', function() {
 $(window).on('load', function() { 
     currentEmail = localStorage.getItem('2tgewg3g3%&^j$');
     currentUser = JSON.parse(localStorage.getItem(currentEmail));
+    priceTotal = localStorage.getItem('b3hkbr1%*(Gj');
 
     managerMenu = localStorage.getItem('vggd%^DI*65');
     deletedItems = localStorage.getItem('noi()*%8537f7');
@@ -211,7 +225,7 @@ function removeCheckout(element) {
 $(document).on('mouseenter', '.menu-item', function() {
     if($('.manager-page').length > 0) {
         $(this).children('img').css({'width': '400px', 'height': '300px', 'transition': '0.5s'});
-        $(this).children('p').css({'color': 'red', 'transition': '0.5s'}).html(`${$(this).children('p').html()} - Remove?`);
+        $(this).children('p').css({'color': 'orangered', 'transition': '0.5s'}).html(`${$(this).children('p').html()} - Remove?`);
     }
     else {
         $(this).children('img').css({'width': '400px', 'height': '300px', 'transition': '0.5s'});
@@ -612,8 +626,10 @@ $(window).on('load', function() {
         }
     }
     else if($('.rec-page').length > 0) {
+        $('.placed-order-total').html(`$${priceTotal}`);
+
         for(i = 0; i < currentUser.checkoutOrder.name.length; i++) {
-            $('.order-history').append(`
+            $('.rec-page').append(`
             <div class="rec-item-name">${currentUser.checkoutOrder.name[i]}</div>
                 <div class="rec-con">
                 <div class="item-pic-rec">
