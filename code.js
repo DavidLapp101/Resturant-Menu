@@ -614,7 +614,7 @@ $(window).on('load', function() {
 
     if(currentEmail == adminEmail && $('.first-last-name').length > 0) {
         $('.first-last-name').after(`
-            <a href="manager-page.html">Edit Menu</a>
+            <a href="manager-page.html">Manager Edit Menu</a>
         `).remove();
     }
 
