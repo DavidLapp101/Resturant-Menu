@@ -15,7 +15,7 @@
             <ul>
             <li><a href="checkout.html"><ion-icon name="cart" class="nav-icons"></ion-icon></a></li>
             <li><a href="menu.html"><ion-icon name="newspaper-outline"  class="nav-icons"></ion-icon></a></li>
-            <li><a href="#"><div class="prof"><ion-icon name="person-circle-outline" class="nav-icons visited"></ion-icon><span class="signout">
+            <li><div class="prof"><ion-icon name="person-circle-outline" class="nav-icons"></ion-icon><span class="signout">
                 <div class="prof-options">
                 <p class="first-last-name">Joe Mama</p>
                 <a href="welome-page.html">Home</a>
@@ -45,43 +45,22 @@
                     <p class="user-settings-title">User Info</p>
                     <p class="user-settings-title-text">Any changes you make will apply to your account</p>
                 </div>
-                <div>
-                    <p class="profile-settings-title">Profile Settings</p>
-                    <form onsubmit="profileChangeName(event)" autocomplete="off">
-                        <label class="profile-settings-first-name-label" for="profile-settings-first-name">First Name</label>
-                        <input type="text" name="profile-settings-first-name" id="profile-settings-first-name" class="profile-text-box"><br>
-    
-                        <label class="profile-settings-first-name-label" style="padding-right: 22;" for="profile-settings-last-name">Last Name</label>
-                        <input type="text" name="profile-text-box profile-settings-last-name" id="profile-settings-last-name" class="profile-text-box"><br>
-
-                        <button type="submit" class="profile-settings-submit">Submit</button>
-                    </form>
-                </div>
-                <hr style="clear: both; margin-top: 80px; height: 1px; background-color: grey; border:none;">
-                <div class="Account-settings">
-                    <p class="profile-settings-title">Account Setting</p>
-                    <form onsubmit="profileChangeEmail(event)" autocomplete="off">
-                        <label class="profile-settings-first-name-label" for="profile-text-box">Email</label>
-                        <input type="text" name="profile-text-box" class="profile-text-box profile-settings-email"><br>
-
-                        <button type="submit" class="profile-settings-submit">Submit</button>
-                    </form>
-                </div>
-                <hr style="clear: both; margin-top: 80px; height: 2px; background-color: grey; border:none;">
                 <div class="Account-settings-reset-password">
                     <p class="profile-settings-title">Reset Password</p>
-                    <form onsubmit="profileChangePwd(event)" autocomplete="off">
+
+                    <form onsubmit="profileChangePwd(event);" autocomplete="off">
                         <label class="profile-settings-first-name-label" for="profile-text-box" style="padding-right: 95px;">New Password</label>
-                        <input type="text" name="profile-text-box" class="profile-text-box profile-settings-reset-psw"><br>
+                        <input type="text" name="profile-text-box" id="profile-settings-reset-psw" class="profile-text-box " required><br>
 
                         <label class="profile-settings-first-name-label" for="profile-text-box-2">Re-Enter New Password</label>
-                        <input type="text" name="profile-text-box-2" class="profile-text-box profile-settings-reset-psw-confirm"><br>
+                        <input type="text" name="profile-text-box-2" id="profile-settings-reset-psw-confirm" class="profile-text-box" required><br>
 
                         <label class="profile-settings-first-name-label" for="profile-text-box-3" style="padding-right: 71px;">Current Password</label>
-                        <input type="text" name="profile-text-box-3" class="profile-text-box profile-settings-current-pwd"><br>
+                        <input type="text" name="profile-text-box-3" id="profile-settings-current-pwd" class="profile-text-box " required><br>
                         
                         <button type="submit" class="profile-settings-submit">Submit</button>
                     </form>
+                    
                     <hr style="clear: both; margin-top: 80px; height: 2px; background-color: grey; border:none;">
                 </div>
                 <div class="delete-account">
