@@ -139,6 +139,22 @@ $('.del-btn').on('click', function() {
     }
 });
 
+//shows delivery fee if delivery is chosen
+$('.del-btn').on('click', function() {
+    if($('.del-fee').children().length > 0) {
+    }
+    else {
+    $('.del-fee').append(`
+    <h5>Delivery Fee</h5>
+    <p>$49.99</p>`);
+    }
+});
+
+//removes delivery fee when pick up is chosen
+$('.pick-btn').on('click', function() {
+    $('.del-fee').children().remove();
+});
+
 //removes adress option if you choose pickup
 $('.pick-btn').on('click', function() {
     $('.no-del').children().remove();
