@@ -53,7 +53,7 @@ $(window).on('load', function() {
     console.log(currentUser);
  });
 
-$('.welome-page-full').on('load', function(){
+$(window).on('load', function(){
     let fullArr = JSON.parse(localStorage.getItem('fullArr'));
     let tempname=currentUser.name;
     for(let f=0; f<=fullArr.length-1; f++){
@@ -438,6 +438,7 @@ const signUpPage =i=> {
     
 }
 
+//creates a admin account automatically 
 $(window).on('load', function(){
     let fullArr = JSON.parse(localStorage.getItem('fullArr')) || [];
     
@@ -503,6 +504,48 @@ function forgetPwd(i){
     localStorage.setItem('fullArr', fullArr)
 }
 
+function profileChangePwd(i){
+    let newPass=document.getElementById('profile-settings-reset-psw').value;
+    let confirmPass=document.getElementById('profile-settings-reset-psw-confirm').value;
+    let currentPass=document.getElementById('profile-settings-current-pwd').value;
+    let fullArr = JSON.parse(localStorage.getItem('fullArr'));
+    let email=usersEmail;
+    let psw;
+    let firstName='1';
+    let lastName='1';
+    if(newPass!=confirmPass){
+        alert('Your passwords are not the same!!!');
+    }
+    else{
+        psw=newPass
+        if(currentPass!=usersPassword){
+            alert('Your current password does not match');
+        }
+        else{
+            alert('in else statement');
+            for(let f=0; f<=fullArr.length-1; f++){
+                alert('in for')
+                console.log("Last Name: " + fullArr[f].firstName + ", Last Name: "+fullArr[f].lastName+", Email: "+fullArr[f].email+", Password: "+fullArr[f].psw)
+                if(fullArr[f].email=usersEmail){
+                    alert('in if loop')
+                    firstName=usersFirstName;
+                    console.log(firstName)
+                    lastName=usersLastName;
+                    console.log(lastName)
+                    fullArr.splice(f,1)
+                }
+                alert('end for loop')   
+            }
+            alert('hiya')
+            let newData={firstName, lastName, email, psw};
+            alert('HELLLLLLOOOOOOO')
+            fullArr.push(newData)
+            fullArr=JSON.stringify(fullArr);
+            localStorage.setItem('fullArr', fullArr) 
+        }
+    }
+    alert('end of statement')
+}
 $('.final-checkout').on('click', function() {
     if($('.final-checkout').siblings().length > 0) {
         location.href="checkout.html";
