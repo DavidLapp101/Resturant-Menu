@@ -54,12 +54,14 @@ $(window).on('unload', function() {
             priceTotal += Number($('.del-fee p').html().replace('$', ''));
         }
 
-        priceTotal = Math.round((priceTotal + Number.EPSILON) * 100) / 100
+        priceTotal = Math.round((priceTotal + Number.EPSILON) * 100) / 100;
+        localStorage.setItem('b3hkbr1%*(Gj', priceTotal);
     }
 
-    localStorage.setItem('b3hkbr1%*(Gj', priceTotal);
-    localStorage.setItem('2tgewg3g3%&^j$', currentEmail);
-    localStorage.setItem(currentEmail, JSON.stringify(currentUser));
+    if(currentUser != undefined || currentUser != null) {
+        localStorage.setItem('2tgewg3g3%&^j$', currentEmail);
+        localStorage.setItem(currentEmail, JSON.stringify(currentUser));
+    }
 });
 
 $(window).on('load', function() { 
@@ -709,6 +711,8 @@ $(window).on('load', function() {
             </div>
             `);
         }
+
+        currentUser.checkoutOrder = new Order();
     }
  });
 
