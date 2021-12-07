@@ -817,7 +817,7 @@ header ul li a:hover {
     border: 1px solid grey;
     border-radius: 15px;
     height: 100%;
-    width: 45%;
+    width: auto;
     padding: 20px;
 }
 .right-box-overview{
