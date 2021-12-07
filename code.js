@@ -42,14 +42,19 @@ $(window).on('unload', function() {
     saveOrder();
 
     if($('.checkout-wrapper').length > 0) {
+        priceTotal = 0;
+
+        priceTotal += Number($('.check-total').children().html().replace('$', ''));
+
         if($('.gift').length > 0) {
-            priceTotal = Math.round(((Number($('.del-fee p').html().replace('$', '')) + Number($('.check-total').
-            children().html().replace('$', '')) + Number($('.gift').html().replace('$', ''))) + Number.EPSILON) * 100) / 100;
+            priceTotal += Number($('.gift').html().replace('$', ''));
         }
-        else {
-            priceTotal = Math.round(((Number($('.del-fee p').html().replace('$', '')) + Number($('.check-total').
-            children().html().replace('$', ''))) + Number.EPSILON) * 100) / 100;
+
+        if($('.del-fee p').length > 0) {
+            priceTotal += Number($('.del-fee p').html().replace('$', ''));
         }
+
+        priceTotal = Math.round((priceTotal + Number.EPSILON) * 100) / 100
     }
 
     localStorage.setItem('b3hkbr1%*(Gj', priceTotal);
