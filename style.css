@@ -1,5 +1,25 @@
 *, *:before, *:after {box-sizing: border-box; padding: 0; margin: 0;}
 
+/* width */
+::-webkit-scrollbar {
+    width: 15px;
+}
+  
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+   
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: lightskyblue;
+}
+  
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(136, 207, 252, 0.9); 
+}
+
 .menu-body {
     font-family: 'Montserrat', sans-serif;
     background-color: gainsboro;
@@ -1414,7 +1434,7 @@ header ul li a:hover {
     background-color: lightskyblue;
     border: 1px solid lightskyblue;
     border-radius: 10px;
-    margin: 50px 0 0 200px;
+    margin: 0 0 0 200px;
 }
 
 .rem-btn:hover {
