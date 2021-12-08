@@ -56,6 +56,8 @@ $(window).on('unload', function() {
 
         priceTotal = Math.round((priceTotal + Number.EPSILON) * 100) / 100;
         localStorage.setItem('b3hkbr1%*(Gj', priceTotal);
+
+        
     }
 
     if(currentUser != undefined || currentUser != null) {
@@ -696,6 +698,16 @@ $(window).on('load', function() {
         }
     }
     else if($('.rec-page').length > 0) {
+        let orderTime = Math.round((Math.random() / 2) * 1000) / 10;
+        
+        if(orderTime < 12) {
+            orderTime = 12;
+        }
+
+        $('.est-time').html(`${orderTime}min`);
+        $('.rec-order-info h1').html(`Hi ${currentUser.name} ${currentUser.lastName}`);
+        $('.rec-order-info h3').html(`Order Name: ${currentUser.pastOrders[currentUser.pastOrders.length - 1].orderTitle}`);
+
         $('.placed-order-total').html(`$${priceTotal}`);
 
         for(i = 0; i < currentUser.checkoutOrder.name.length; i++) {
@@ -711,8 +723,6 @@ $(window).on('load', function() {
             </div>
             `);
         }
-
-        currentUser.checkoutOrder = new Order();
     }
  });
 
