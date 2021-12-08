@@ -71,7 +71,6 @@ $(window).on('load', function() {
 
     managerMenu = localStorage.getItem('vggd%^DI*65');
     deletedItems = localStorage.getItem('noi()*%8537f7');
-    console.log(currentUser);
  });
 
 $(window).on('load', function(){
@@ -696,7 +695,14 @@ $(window).on('load', function() {
         }
     }
     else if($('.rec-page').length > 0) {
+        let orderTime = Math.round((Math.random() / 2) * 1000) / 10;
+        
+        if(orderTime < 12) {
+            orderTime = 12;
+        }
+
         $('.placed-order-total').html(`$${priceTotal}`);
+        $('.rec-page').append(``);
 
         for(i = 0; i < currentUser.checkoutOrder.name.length; i++) {
             $('.rec-page').append(`
@@ -711,8 +717,6 @@ $(window).on('load', function() {
             </div>
             `);
         }
-
-        currentUser.checkoutOrder = new Order();
     }
  });
 
