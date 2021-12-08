@@ -1588,7 +1588,7 @@ header ul li a:hover {
     text-align: center;
 }
 
-.rec-order-info h3 {
+.rec-order-info h3, .rec-order-info h2 {
     font-family: "Lato";
     font-size: 1.4rem;
     color: black;
