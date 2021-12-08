@@ -1530,11 +1530,21 @@ header ul li a:hover {
 
 .rec-page {
     width: 100%;
-    height: auto;
-    max-height: 750px;
+    height: 760px;
     overflow: scroll;
     background-color: white;
-    padding: 0 0 60px 0;
+}
+
+.goober-rec-logo .goober-logo {
+    margin: 50px auto;
+}
+
+.goober-rec-logo h1 {
+    font-family: "Lato";
+    font-size: 1.6rem;
+    text-align: center;
+    color: black;
+    margin: 70px 0 0 0;
 }
 
 /* width */
@@ -1573,8 +1583,7 @@ header ul li a:hover {
 
 .rec-order-info {
     width: 40%;
-    height: auto;
-    max-height: 820px;
+    height: 820px;
     background-color: white;
     border-radius: 20px;
     box-shadow: 2px 2px 3px 3px rgba(194, 184, 184, .4);
@@ -1586,6 +1595,7 @@ header ul li a:hover {
     font-size: 1.8rem;
     color: black;
     text-align: center;
+    margin: 20px 0 0 0;
 }
 
 .rec-order-info h3 {
